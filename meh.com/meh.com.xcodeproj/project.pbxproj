@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E28F88276016D66FBAD1804 /* Pods_meh_com.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF0F2F45250F184A110A0914 /* Pods_meh_com.framework */; };
 		78F197F4227D512B0086C264 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F197F3227D512B0086C264 /* AppDelegate.swift */; };
 		78F197FB227D512C0086C264 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78F197FA227D512C0086C264 /* Assets.xcassets */; };
 		78F197FE227D512C0086C264 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78F197FC227D512C0086C264 /* LaunchScreen.storyboard */; };
@@ -15,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		312600FC0D469AA878B1F00D /* Pods-meh.com.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meh.com.release.xcconfig"; path = "Pods/Target Support Files/Pods-meh.com/Pods-meh.com.release.xcconfig"; sourceTree = "<group>"; };
+		6EFB1BC75794F1218054F81E /* Pods-meh.com.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meh.com.debug.xcconfig"; path = "Pods/Target Support Files/Pods-meh.com/Pods-meh.com.debug.xcconfig"; sourceTree = "<group>"; };
 		78F197F0227D512B0086C264 /* meh.com.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meh.com.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78F197F3227D512B0086C264 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78F197FA227D512C0086C264 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		78F19809227D568D0086C264 /* meh.com-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "meh.com-Bridging-Header.h"; sourceTree = "<group>"; };
 		78F1980A227D568D0086C264 /* LoadingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadingViewController.h; sourceTree = "<group>"; };
 		78F1980B227D568D0086C264 /* LoadingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadingViewController.m; sourceTree = "<group>"; };
+		AF0F2F45250F184A110A0914 /* Pods_meh_com.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_meh_com.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,18 +35,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E28F88276016D66FBAD1804 /* Pods_meh_com.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		271F4AF23FD9C279D78331D8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AF0F2F45250F184A110A0914 /* Pods_meh_com.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		78F197E7227D512B0086C264 = {
 			isa = PBXGroup;
 			children = (
 				78F19805227D54050086C264 /* lib */,
 				78F197F2227D512B0086C264 /* meh.com */,
 				78F197F1227D512B0086C264 /* Products */,
+				89E4DB6D6166682EB7324A2F /* Pods */,
+				271F4AF23FD9C279D78331D8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,6 +99,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		89E4DB6D6166682EB7324A2F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6EFB1BC75794F1218054F81E /* Pods-meh.com.debug.xcconfig */,
+				312600FC0D469AA878B1F00D /* Pods-meh.com.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -91,9 +115,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 78F19802227D512C0086C264 /* Build configuration list for PBXNativeTarget "meh.com" */;
 			buildPhases = (
+				04F7071DC43D01BB2B776138 /* [CP] Check Pods Manifest.lock */,
 				78F197EC227D512B0086C264 /* Sources */,
 				78F197ED227D512B0086C264 /* Frameworks */,
 				78F197EE227D512B0086C264 /* Resources */,
+				43E1646EEFE6F1B14A3B32A7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -149,6 +175,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04F7071DC43D01BB2B776138 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-meh.com-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		43E1646EEFE6F1B14A3B32A7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-meh.com/Pods-meh.com-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-meh.com/Pods-meh.com-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		78F197EC227D512B0086C264 /* Sources */ = {
@@ -293,6 +370,7 @@
 		};
 		78F19803227D512C0086C264 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6EFB1BC75794F1218054F81E /* Pods-meh.com.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -315,6 +393,7 @@
 		};
 		78F19804227D512C0086C264 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 312600FC0D469AA878B1F00D /* Pods-meh.com.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
