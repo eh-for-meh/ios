@@ -17,16 +17,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.whiteColor;
+    UILabel * titleLabel = [UILabel new];
+    titleLabel.translatesAutoresizingMaskIntoConstraints = false;
+    titleLabel.text = @"eh for meh";
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    [titleLabel setFont: [UIFont preferredFontForTextStyle:UIFontTextStyleLargeTitle]];
+    [self.view addSubview:titleLabel];
+    [[titleLabel.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:0] setActive:true];
+    [[titleLabel.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor constant:0] setActive:true];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
