@@ -7,6 +7,7 @@
 //
 
 #import "LoadingViewController.h"
+#import "meh_com-Swift.h"
 
 @interface LoadingViewController ()
 
@@ -25,6 +26,13 @@
     [self.view addSubview:titleLabel];
     [[titleLabel.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:0] setActive:true];
     [[titleLabel.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor constant:0] setActive:true];
+    [self loadCurrentTheme];
+}
+
+- (void)loadCurrentTheme {
+    [ThemeLoader.shared loadThemeWithCompletion: ^(Theme * theme) {
+        
+    }];
 }
 
 @end

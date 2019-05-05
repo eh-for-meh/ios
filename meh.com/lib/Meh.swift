@@ -29,11 +29,11 @@ class Story: Decodable {
     var title: String?
 }
 
-class Theme: Decodable {
-    var accentColor: String?
-    var backgroundColor: String?
-    var backgroundImage: String?
-    var forground: String?
+@objc class Theme: NSObject, Decodable {
+    @objc var accentColor: String?
+    @objc var backgroundColor: String?
+    @objc var backgroundImage: String?
+    @objc var forground: String?
 }
 
 class Topic: Decodable {
