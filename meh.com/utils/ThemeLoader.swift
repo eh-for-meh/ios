@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseAnalytics
 import FirebaseDatabase
 
 @objc class ThemeLoader: NSObject {
@@ -21,6 +22,7 @@ import FirebaseDatabase
                 let theme: Theme = try JSONDecoder().decode(Theme.self, from: json)
                 completion(theme)
             } catch let error {
+                Analytics.logEvent("theme_load_failed", parameters: ["deal": "current"])
                 print("Error loading theme: \(error)")
             }
             
