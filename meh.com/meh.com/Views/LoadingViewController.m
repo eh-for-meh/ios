@@ -31,7 +31,10 @@
 
 - (void)loadCurrentTheme {
     [ThemeLoader.shared loadThemeWithCompletion: ^(Theme * theme) {
-        
+        MainViewController *view = [[MainViewController alloc] init];
+        view.theme = theme;
+        view.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [self presentViewController:view animated:true completion:NULL];
     }];
 }
 
