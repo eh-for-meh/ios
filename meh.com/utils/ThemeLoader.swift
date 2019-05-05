@@ -16,16 +16,30 @@ import FirebaseDatabase
     
     @objc func loadTheme(completion: @escaping (_ theme: Theme) -> Void) {
         Database.database().reference(withPath: "currentDeal/deal/theme").observeSingleEvent(of: .value) { snapshot in
-            guard let value = snapshot.value as? [String: Any] else { return }
-            do {
-                let json: Data = try JSONSerialization.data(withJSONObject: value, options: [])
-                let theme: Theme = try JSONDecoder().decode(Theme.self, from: json)
+            if let theme = self.convertDataSnapshotToTheme(snapshot: snapshot) {
                 completion(theme)
-            } catch let error {
-                Analytics.logEvent("theme_load_failed", parameters: ["deal": "current"])
-                print("Error loading theme: \(error)")
             }
-            
         }
+    }
+    
+    @objc func loadTheme(forPreviousDeal: String, completion: @escaping (_ theme: Theme) -> Void) {
+        Database.database().reference(withPath: "previousDeal/\(forPreviousDeal)/deal/theme").observeSingleEvent(of: .value, with: { snapshot in
+            if let theme = self.convertDataSnapshotToTheme(snapshot: snapshot) {
+                completion(theme)
+            }
+        })
+    }
+    
+    fileprivate func convertDataSnapshotToTheme(snapshot: DataSnapshot) -> Theme? {
+        guard let value = snapshot.value as? [String: Any] else { return nil }
+        do {
+            let json: Data = try JSONSerialization.data(withJSONObject: value, options: [])
+            let theme: Theme = try JSONDecoder().decode(Theme.self, from: json)
+            return theme
+        } catch let error {
+            Analytics.logEvent("theme_load_failed", parameters: ["deal": "current"])
+            print("Error loading theme: \(error)")
+        }
+        return nil
     }
 }
