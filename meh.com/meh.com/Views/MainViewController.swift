@@ -69,7 +69,7 @@ import UIKit
                         // remain within the range of the dealPphotos array count
                         // because a maximum of the count - 1 and a minimum of 0
                         // are enforced.
-                        let at: Int = min(index, max(0, self.dealPhotos.count - 1));
+                        let at: Int = max(0, min(index, self.dealPhotos.count))
                         self.dealPhotos.insert(image, at: at)
                     }
                 }
