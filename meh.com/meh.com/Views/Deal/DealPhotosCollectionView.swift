@@ -18,7 +18,7 @@ class DealPhotosCollectionView: UICollectionView {
     
     var dealPhotos: Array<UIImage?> = [] {
         didSet {
-            self.reloadData()
+            reloadData()
         }
     }
     
