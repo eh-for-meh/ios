@@ -31,7 +31,7 @@
 
 - (void)loadCurrentTheme {
     [ThemeLoader.shared loadThemeWithCompletion: ^(Theme * theme) {
-        MainViewController *view = [[MainViewController alloc] init];
+        DealViewController *view = [[DealViewController alloc] init];
         view.theme = theme;
         view.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentViewController:view animated:true completion:NULL];

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6E28F88276016D66FBAD1804 /* Pods_meh_com.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF0F2F45250F184A110A0914 /* Pods_meh_com.framework */; };
-		783D4E07227F6A8300FB6385 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D4E06227F6A8300FB6385 /* MainViewController.swift */; };
+		783D4E07227F6A8300FB6385 /* DealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D4E06227F6A8300FB6385 /* DealViewController.swift */; };
 		783D4E0A227F6C3600FB6385 /* MUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D4E09227F6C3600FB6385 /* MUIColor.swift */; };
 		7857E49F228214C0005EB7F7 /* DealLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7857E49E228214C0005EB7F7 /* DealLoader.swift */; };
 		7857E4A42282292C005EB7F7 /* DealPhotosCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7857E4A32282292C005EB7F7 /* DealPhotosCollectionView.swift */; };
@@ -25,7 +25,7 @@
 /* Begin PBXFileReference section */
 		312600FC0D469AA878B1F00D /* Pods-meh.com.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meh.com.release.xcconfig"; path = "Pods/Target Support Files/Pods-meh.com/Pods-meh.com.release.xcconfig"; sourceTree = "<group>"; };
 		6EFB1BC75794F1218054F81E /* Pods-meh.com.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meh.com.debug.xcconfig"; path = "Pods/Target Support Files/Pods-meh.com/Pods-meh.com.debug.xcconfig"; sourceTree = "<group>"; };
-		783D4E06227F6A8300FB6385 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		783D4E06227F6A8300FB6385 /* DealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealViewController.swift; sourceTree = "<group>"; };
 		783D4E09227F6C3600FB6385 /* MUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MUIColor.swift; sourceTree = "<group>"; };
 		7857E49E228214C0005EB7F7 /* DealLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealLoader.swift; sourceTree = "<group>"; };
 		7857E4A32282292C005EB7F7 /* DealPhotosCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealPhotosCollectionView.swift; sourceTree = "<group>"; };
@@ -77,6 +77,7 @@
 			children = (
 				7857E4A32282292C005EB7F7 /* DealPhotosCollectionView.swift */,
 				7857E4A522822987005EB7F7 /* DealPhotosCollectionViewCell.swift */,
+				783D4E06227F6A8300FB6385 /* DealViewController.swift */,
 			);
 			path = Deal;
 			sourceTree = "<group>";
@@ -139,7 +140,6 @@
 				78F1980A227D568D0086C264 /* LoadingViewController.h */,
 				78F1980B227D568D0086C264 /* LoadingViewController.m */,
 				78F19809227D568D0086C264 /* meh.com-Bridging-Header.h */,
-				783D4E06227F6A8300FB6385 /* MainViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -285,7 +285,7 @@
 				78B6F609227DD4B000C5F8E5 /* ThemeLoader.swift in Sources */,
 				7857E4A622822987005EB7F7 /* DealPhotosCollectionViewCell.swift in Sources */,
 				78F197F4227D512B0086C264 /* AppDelegate.swift in Sources */,
-				783D4E07227F6A8300FB6385 /* MainViewController.swift in Sources */,
+				783D4E07227F6A8300FB6385 /* DealViewController.swift in Sources */,
 				783D4E0A227F6C3600FB6385 /* MUIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

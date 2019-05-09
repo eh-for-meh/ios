@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  DealViewController
 //  meh.com
 //
 //  Created by Kirin Patel on 5/5/19.
@@ -9,7 +9,7 @@
 import UIKit
 import SafariServices
 
-@objc class MainViewController: UIViewController {
+@objc class DealViewController: UIViewController {
     
     let collectionView: DealPhotosCollectionView = {
         let dealPhotosCollectionView = DealPhotosCollectionView()
@@ -120,7 +120,7 @@ import SafariServices
     }
 }
 
-extension MainViewController: UIWebViewDelegate {
+extension DealViewController: UIWebViewDelegate {
     
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         guard let url = request.url, navigationType == .linkClicked else { return true }
