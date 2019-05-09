@@ -10,7 +10,21 @@ import UIKit
 
 @objc class MainViewController: UIViewController {
     
-    let collectionView = DealPhotosCollectionView()
+    let collectionView: DealPhotosCollectionView = {
+        let dealPhotosCollectionView = DealPhotosCollectionView()
+        dealPhotosCollectionView.alpha = 0
+        return dealPhotosCollectionView
+    }()
+    
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        label.numberOfLines = 2
+        label.minimumScaleFactor = 0.5
+        label.alpha = 0
+        return label
+    }()
     
     @objc var theme: Theme! {
         didSet {
@@ -24,6 +38,13 @@ import UIKit
         didSet {
             if let deal = deal {
                 loadDealPhotos(photoURLs: deal.photos ?? [])
+                if let title = deal.title {
+                    titleLabel.text = title
+                }
+                UIView.animate(withDuration: 0.5) {
+                    self.collectionView.alpha = 1
+                    self.titleLabel.alpha = 1
+                }
             }
         }
     }
@@ -49,6 +70,10 @@ import UIKit
         collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
         collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
         collectionView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.size.width / 1.25).isActive = true
+        view.addSubview(titleLabel)
+        titleLabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 8).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 8).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -8).isActive = true
     }
     
     fileprivate func loadDealPhotos(photoURLs: Array<String>) {
