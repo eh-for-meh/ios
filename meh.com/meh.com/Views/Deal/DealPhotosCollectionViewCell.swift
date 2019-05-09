@@ -17,9 +17,22 @@ class DealPhotosCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    var dealPhoto: UIImage! {
+    private let loadingIndicator: UIActivityIndicatorView = {
+        let activityIndicatorView = UIActivityIndicatorView()
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicatorView.hidesWhenStopped = true
+        return activityIndicatorView
+    }()
+    
+    var dealPhoto: UIImage? {
         didSet {
-            imageView.image = dealPhoto
+            if let image = dealPhoto {
+                imageView.image = image
+                loadingIndicator.stopAnimating()
+            } else {
+                loadingIndicator.startAnimating()
+                loadingIndicator.isHidden = false
+            }
         }
     }
     
@@ -30,6 +43,9 @@ class DealPhotosCollectionViewCell: UICollectionViewCell {
         imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8).isActive = true
         imageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 8).isActive = true
         imageView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -8).isActive = true
+        contentView.addSubview(loadingIndicator)
+        loadingIndicator.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        loadingIndicator.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {

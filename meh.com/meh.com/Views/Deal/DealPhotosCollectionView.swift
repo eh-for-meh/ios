@@ -16,7 +16,7 @@ class DealPhotosCollectionView: UICollectionView {
         return layout
     }()
     
-    var dealPhotos: Array<UIImage> = [] {
+    var dealPhotos: Array<UIImage?> = [] {
         didSet {
             self.reloadData()
         }

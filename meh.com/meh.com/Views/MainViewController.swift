@@ -27,7 +27,7 @@ import UIKit
             }
         }
     }
-    var dealPhotos: Array<UIImage> = [] {
+    var dealPhotos: Array<UIImage?> = [] {
         didSet {
             collectionView.dealPhotos = dealPhotos
         }
@@ -59,18 +59,14 @@ import UIKit
                 urls.append(url)
             }
         }
+        dealPhotos = Array<UIImage?>(repeating: nil, count: urls.count)
         for index in 0...(urls.count - 1) {
             let task = URLSession.shared.dataTask(with: urls[index]) { (data, response, error) in
                 guard error == nil else { return }
                 guard let data = data else { return }
                 DispatchQueue.main.async {
                     if let image = UIImage(data: data) {
-                        // Handles image index insertion. The at index will always
-                        // remain within the range of the dealPphotos array count
-                        // because a maximum of the count - 1 and a minimum of 0
-                        // are enforced.
-                        let at: Int = max(0, min(index, self.dealPhotos.count))
-                        self.dealPhotos.insert(image, at: at)
+                        self.dealPhotos[index] = image
                     }
                 }
             }
