@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 @objc class MainViewController: UIViewController {
     
@@ -26,6 +27,15 @@ import UIKit
         return label
     }()
     
+    let storyWebView: UIWebView = {
+        let webView = UIWebView()
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.scalesPageToFit = true
+        webView.backgroundColor = .clear
+        webView.alpha = 0
+        return webView
+    }()
+    
     @objc var theme: Theme! {
         didSet {
             if let backgroundColorString = theme.backgroundColor {
@@ -40,6 +50,10 @@ import UIKit
                 loadDealPhotos(photoURLs: deal.photos ?? [])
                 if let title = deal.title {
                     titleLabel.text = title
+                }
+                if let story = deal.story,
+                    let html = story.asHTML(deal.theme?.backgroundColor ?? "#FFFFFF", deal.theme?.accentColor ?? "#000000") {
+                    storyWebView.loadHTMLString(html, baseURL: nil)
                 }
                 UIView.animate(withDuration: 0.5) {
                     self.collectionView.alpha = 1
@@ -74,6 +88,12 @@ import UIKit
         titleLabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 8).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 8).isActive = true
         titleLabel.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -8).isActive = true
+        view.addSubview(storyWebView)
+        storyWebView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
+        storyWebView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        storyWebView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 8).isActive = true
+        storyWebView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -8).isActive = true
+        storyWebView.delegate = self
     }
     
     fileprivate func loadDealPhotos(photoURLs: Array<String>) {
@@ -96,6 +116,22 @@ import UIKit
                 }
             }
             task.resume()
+        }
+    }
+}
+
+extension MainViewController: UIWebViewDelegate {
+    
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
+        guard let url = request.url, navigationType == .linkClicked else { return true }
+        let safariView = SFSafariViewController(url: url)
+        present(safariView, animated: true)
+        return false
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        UIView.animate(withDuration: 0.5) {
+            webView.alpha = 1
         }
     }
 }
