@@ -42,9 +42,9 @@ class ImageViewController: UIViewController {
     }
     
     @objc func viewEnlargedImage(_ sender: UITapGestureRecognizer) {
-        if let image = imageView.image, let delegate = delegate {
-            delegate.imageTapped(image)
-        }
+//        if let image = imageView.image, let delegate = delegate {
+//            delegate.imageTapped(image)
+//        }
     }
     
     @objc func shareImage(_ sender: UILongPressGestureRecognizer) {
