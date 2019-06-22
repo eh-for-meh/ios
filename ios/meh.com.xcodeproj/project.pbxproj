@@ -1,0 +1,925 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04934306661B3016CDC9C1EA /* Pods_Meh_Notification_Service_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2925F28751C8A0282DB64004 /* Pods_Meh_Notification_Service_Extension.framework */; };
+		2AA37B06988EE5272DFE884A /* Pods_Meh_Deal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD64933D1800455A5CA2E589 /* Pods_Meh_Deal.framework */; };
+		781FCC5F20FE5D63009F35ED /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FCC5E20FE5D63009F35ED /* MainViewController.swift */; };
+		78266BC1200FC7F400BF5BD8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78266BC0200FC7F400BF5BD8 /* Extensions.swift */; };
+		7826E0EA1FD655400011AA23 /* ImagePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826E0E91FD655400011AA23 /* ImagePageViewController.swift */; };
+		7826E0EE1FD659320011AA23 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826E0ED1FD659320011AA23 /* ImageViewController.swift */; };
+		7830BD991FD5C1EB00F3D371 /* DealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7830BD981FD5C1EB00F3D371 /* DealViewController.swift */; };
+		784BED89211958D400F68B60 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784BED88211958D400F68B60 /* Theme.swift */; };
+		785C37FC1FD76D0D002CE08C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785C37FB1FD76D0D002CE08C /* SettingsViewController.swift */; };
+		785D3ECB20131C9B00EB1598 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785D3ECA20131C9B00EB1598 /* NotificationCenter.framework */; };
+		785D3ECE20131C9B00EB1598 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785D3ECD20131C9B00EB1598 /* TodayViewController.swift */; };
+		785D3ED120131C9B00EB1598 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 785D3ECF20131C9B00EB1598 /* MainInterface.storyboard */; };
+		785D3ED520131C9B00EB1598 /* Meh Deal.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 785D3EC920131C9B00EB1598 /* Meh Deal.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		78952D8F1FD5BDCF000E0AAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78952D8E1FD5BDCF000E0AAC /* AppDelegate.swift */; };
+		78952D981FD5BDCF000E0AAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78952D971FD5BDCF000E0AAC /* Assets.xcassets */; };
+		78952D9B1FD5BDCF000E0AAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78952D991FD5BDCF000E0AAC /* LaunchScreen.storyboard */; };
+		78AD53AE2102F4AF0031E9B0 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AD53AD2102F4AF0031E9B0 /* LoadingViewController.swift */; };
+		78B799172158852D00526816 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B799162158852D00526816 /* BottomSheetViewController.swift */; };
+		78C110CD211B8C7C00622810 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C110CC211B8C7C00622810 /* HistoryTableViewController.swift */; };
+		78C110CF211B8D3600622810 /* HistoryNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C110CE211B8D3600622810 /* HistoryNavigationViewController.swift */; };
+		78C110D2211B948C00622810 /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C110D1211B948C00622810 /* Deal.swift */; };
+		78C110D4211B94E200622810 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C110D3211B94E200622810 /* Item.swift */; };
+		78C110D6211B955700622810 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C110D5211B955700622810 /* Story.swift */; };
+		78C110D8211B958D00622810 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C110D7211B958D00622810 /* Topic.swift */; };
+		78C110DA211B974100622810 /* Poll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C110D9211B974100622810 /* Poll.swift */; };
+		78C110DE211B97D100622810 /* DealLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C110DD211B97D100622810 /* DealLoader.swift */; };
+		78C110E0211B99BB00622810 /* ThemeLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C110DF211B99BB00622810 /* ThemeLoader.swift */; };
+		78C57276226F8041005C5F37 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78C57275226F8041005C5F37 /* GoogleService-Info.plist */; };
+		78C57277226F8041005C5F37 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78C57275226F8041005C5F37 /* GoogleService-Info.plist */; };
+		78C572792270B6A7005C5F37 /* Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C572782270B6A7005C5F37 /* Structures.swift */; };
+		78C5727B2270B6C4005C5F37 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C5727A2270B6C4005C5F37 /* Extensions.swift */; };
+		78D1A65D2218514E00AF75F9 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1A65C2218514E00AF75F9 /* NotificationService.swift */; };
+		78D1A6612218514E00AF75F9 /* Meh Notification Service Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 78D1A65A2218514E00AF75F9 /* Meh Notification Service Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		78D5D7A7211D472C0085D4E2 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D5D7A6211D472C0085D4E2 /* HistoryTableViewCell.swift */; };
+		78E2712721759202008375E0 /* SettingsNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E2712621759202008375E0 /* SettingsNavigationViewController.swift */; };
+		78F7C21D2229AA5E00518183 /* EnlargedImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F7C21C2229AA5E00518183 /* EnlargedImageViewController.swift */; };
+		A9E3D3EBBF74004850F4629F /* Pods_meh_com.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9B8600787B1AEA09CCDBB8F /* Pods_meh_com.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		785D3ED320131C9B00EB1598 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78952D831FD5BDCE000E0AAC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 785D3EC820131C9B00EB1598;
+			remoteInfo = "Meh Deal";
+		};
+		78D1A65F2218514E00AF75F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78952D831FD5BDCE000E0AAC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 78D1A6592218514E00AF75F9;
+			remoteInfo = "Meh Notification Service Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		785D3ED920131C9B00EB1598 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				785D3ED520131C9B00EB1598 /* Meh Deal.appex in Embed App Extensions */,
+				78D1A6612218514E00AF75F9 /* Meh Notification Service Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		12EBA40DFD69FE30FAB18F22 /* Pods-Meh Deal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meh Deal.release.xcconfig"; path = "Pods/Target Support Files/Pods-Meh Deal/Pods-Meh Deal.release.xcconfig"; sourceTree = "<group>"; };
+		2925F28751C8A0282DB64004 /* Pods_Meh_Notification_Service_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meh_Notification_Service_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		38CA4D8E12BF331B76676C17 /* Pods-meh.com.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meh.com.release.xcconfig"; path = "Pods/Target Support Files/Pods-meh.com/Pods-meh.com.release.xcconfig"; sourceTree = "<group>"; };
+		3CDDDA797F244B5C653149C6 /* Pods-meh.com.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meh.com.debug.xcconfig"; path = "Pods/Target Support Files/Pods-meh.com/Pods-meh.com.debug.xcconfig"; sourceTree = "<group>"; };
+		781FCC5E20FE5D63009F35ED /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		78266BC0200FC7F400BF5BD8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		7826E0E91FD655400011AA23 /* ImagePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePageViewController.swift; sourceTree = "<group>"; };
+		7826E0ED1FD659320011AA23 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		7830BD981FD5C1EB00F3D371 /* DealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealViewController.swift; sourceTree = "<group>"; };
+		784BED88211958D400F68B60 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		785C37FB1FD76D0D002CE08C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		785C37FD1FD7A2DF002CE08C /* meh.com.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = meh.com.entitlements; sourceTree = "<group>"; };
+		785D3EC920131C9B00EB1598 /* Meh Deal.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Meh Deal.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		785D3ECA20131C9B00EB1598 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		785D3ECD20131C9B00EB1598 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		785D3ED020131C9B00EB1598 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		785D3ED220131C9B00EB1598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78952D8B1FD5BDCE000E0AAC /* meh.com.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meh.com.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		78952D8E1FD5BDCF000E0AAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		78952D971FD5BDCF000E0AAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		78952D9A1FD5BDCF000E0AAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		78952D9C1FD5BDCF000E0AAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78AD53AD2102F4AF0031E9B0 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		78B799162158852D00526816 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
+		78C110CC211B8C7C00622810 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
+		78C110CE211B8D3600622810 /* HistoryNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryNavigationViewController.swift; sourceTree = "<group>"; };
+		78C110D1211B948C00622810 /* Deal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deal.swift; sourceTree = "<group>"; };
+		78C110D3211B94E200622810 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		78C110D5211B955700622810 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		78C110D7211B958D00622810 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		78C110D9211B974100622810 /* Poll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poll.swift; sourceTree = "<group>"; };
+		78C110DD211B97D100622810 /* DealLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealLoader.swift; sourceTree = "<group>"; };
+		78C110DF211B99BB00622810 /* ThemeLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeLoader.swift; sourceTree = "<group>"; };
+		78C57275226F8041005C5F37 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		78C572782270B6A7005C5F37 /* Structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structures.swift; sourceTree = "<group>"; };
+		78C5727A2270B6C4005C5F37 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		78D1A65A2218514E00AF75F9 /* Meh Notification Service Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Meh Notification Service Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		78D1A65C2218514E00AF75F9 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		78D1A65E2218514E00AF75F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78D1A66522185B6000AF75F9 /* Meh Deal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Meh Deal.entitlements"; sourceTree = "<group>"; };
+		78D1A66622185B6A00AF75F9 /* Meh Notification Service Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Meh Notification Service Extension.entitlements"; sourceTree = "<group>"; };
+		78D5D7A6211D472C0085D4E2 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		78E2712621759202008375E0 /* SettingsNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationViewController.swift; sourceTree = "<group>"; };
+		78F7C21C2229AA5E00518183 /* EnlargedImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnlargedImageViewController.swift; sourceTree = "<group>"; };
+		903BF7FAD035129F02A7C4FD /* Pods-Meh Deal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meh Deal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Meh Deal/Pods-Meh Deal.debug.xcconfig"; sourceTree = "<group>"; };
+		AD64933D1800455A5CA2E589 /* Pods_Meh_Deal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meh_Deal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C96094399D4370B4B3543C38 /* Pods-Meh Notification Service Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meh Notification Service Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Meh Notification Service Extension/Pods-Meh Notification Service Extension.release.xcconfig"; sourceTree = "<group>"; };
+		DA7BD26D40DF2CF7259467A9 /* Pods-Meh Notification Service Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meh Notification Service Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Meh Notification Service Extension/Pods-Meh Notification Service Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		E9B8600787B1AEA09CCDBB8F /* Pods_meh_com.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_meh_com.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		785D3EC620131C9B00EB1598 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				785D3ECB20131C9B00EB1598 /* NotificationCenter.framework in Frameworks */,
+				2AA37B06988EE5272DFE884A /* Pods_Meh_Deal.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78952D881FD5BDCE000E0AAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9E3D3EBBF74004850F4629F /* Pods_meh_com.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78D1A6572218514E00AF75F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04934306661B3016CDC9C1EA /* Pods_Meh_Notification_Service_Extension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		67FF1084BEAA0FC7D813C28A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E9B8600787B1AEA09CCDBB8F /* Pods_meh_com.framework */,
+				785D3ECA20131C9B00EB1598 /* NotificationCenter.framework */,
+				AD64933D1800455A5CA2E589 /* Pods_Meh_Deal.framework */,
+				2925F28751C8A0282DB64004 /* Pods_Meh_Notification_Service_Extension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		78266BBF200FC7E300BF5BD8 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				78266BC0200FC7F400BF5BD8 /* Extensions.swift */,
+				78C110DD211B97D100622810 /* DealLoader.swift */,
+				78C110DF211B99BB00622810 /* ThemeLoader.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		7830BD8F1FD5BECD00F3D371 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				78952D991FD5BDCF000E0AAC /* LaunchScreen.storyboard */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		7830BD951FD5C07B00F3D371 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				78E1AFFC21DC53B800703777 /* Deal */,
+				78E1AFFD21DC53C200703777 /* History */,
+				78E1AFFE21DC53E000703777 /* Settings */,
+				7826E0E91FD655400011AA23 /* ImagePageViewController.swift */,
+				7826E0ED1FD659320011AA23 /* ImageViewController.swift */,
+				78AD53AD2102F4AF0031E9B0 /* LoadingViewController.swift */,
+				78F7C21C2229AA5E00518183 /* EnlargedImageViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		785D3ECC20131C9B00EB1598 /* Meh Deal */ = {
+			isa = PBXGroup;
+			children = (
+				78D1A66522185B6000AF75F9 /* Meh Deal.entitlements */,
+				78C5727A2270B6C4005C5F37 /* Extensions.swift */,
+				78C572782270B6A7005C5F37 /* Structures.swift */,
+				785D3ECD20131C9B00EB1598 /* TodayViewController.swift */,
+				785D3ECF20131C9B00EB1598 /* MainInterface.storyboard */,
+				785D3ED220131C9B00EB1598 /* Info.plist */,
+			);
+			path = "Meh Deal";
+			sourceTree = "<group>";
+		};
+		78952D821FD5BDCE000E0AAC = {
+			isa = PBXGroup;
+			children = (
+				78C57275226F8041005C5F37 /* GoogleService-Info.plist */,
+				78952D8D1FD5BDCE000E0AAC /* meh.com */,
+				785D3ECC20131C9B00EB1598 /* Meh Deal */,
+				78D1A65B2218514E00AF75F9 /* Meh Notification Service Extension */,
+				78952D8C1FD5BDCE000E0AAC /* Products */,
+				BBFE7EFBD100451A811A6FFD /* Pods */,
+				67FF1084BEAA0FC7D813C28A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		78952D8C1FD5BDCE000E0AAC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				78952D8B1FD5BDCE000E0AAC /* meh.com.app */,
+				785D3EC920131C9B00EB1598 /* Meh Deal.appex */,
+				78D1A65A2218514E00AF75F9 /* Meh Notification Service Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		78952D8D1FD5BDCE000E0AAC /* meh.com */ = {
+			isa = PBXGroup;
+			children = (
+				78266BBF200FC7E300BF5BD8 /* Utils */,
+				7830BD951FD5C07B00F3D371 /* Views */,
+				78C110D0211B946F00622810 /* Objects */,
+				7830BD8F1FD5BECD00F3D371 /* Scenes */,
+				78952D8E1FD5BDCF000E0AAC /* AppDelegate.swift */,
+				78952D971FD5BDCF000E0AAC /* Assets.xcassets */,
+				78952D9C1FD5BDCF000E0AAC /* Info.plist */,
+				785C37FD1FD7A2DF002CE08C /* meh.com.entitlements */,
+			);
+			path = meh.com;
+			sourceTree = "<group>";
+		};
+		78C110D0211B946F00622810 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				78C110D1211B948C00622810 /* Deal.swift */,
+				78C110D3211B94E200622810 /* Item.swift */,
+				78C110D5211B955700622810 /* Story.swift */,
+				784BED88211958D400F68B60 /* Theme.swift */,
+				78C110D7211B958D00622810 /* Topic.swift */,
+				78C110D9211B974100622810 /* Poll.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		78D1A65B2218514E00AF75F9 /* Meh Notification Service Extension */ = {
+			isa = PBXGroup;
+			children = (
+				78D1A66622185B6A00AF75F9 /* Meh Notification Service Extension.entitlements */,
+				78D1A65C2218514E00AF75F9 /* NotificationService.swift */,
+				78D1A65E2218514E00AF75F9 /* Info.plist */,
+			);
+			path = "Meh Notification Service Extension";
+			sourceTree = "<group>";
+		};
+		78E1AFFC21DC53B800703777 /* Deal */ = {
+			isa = PBXGroup;
+			children = (
+				78B799162158852D00526816 /* BottomSheetViewController.swift */,
+				7830BD981FD5C1EB00F3D371 /* DealViewController.swift */,
+				781FCC5E20FE5D63009F35ED /* MainViewController.swift */,
+			);
+			path = Deal;
+			sourceTree = "<group>";
+		};
+		78E1AFFD21DC53C200703777 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				78C110CE211B8D3600622810 /* HistoryNavigationViewController.swift */,
+				78D5D7A6211D472C0085D4E2 /* HistoryTableViewCell.swift */,
+				78C110CC211B8C7C00622810 /* HistoryTableViewController.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		78E1AFFE21DC53E000703777 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				78E2712621759202008375E0 /* SettingsNavigationViewController.swift */,
+				785C37FB1FD76D0D002CE08C /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		BBFE7EFBD100451A811A6FFD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3CDDDA797F244B5C653149C6 /* Pods-meh.com.debug.xcconfig */,
+				38CA4D8E12BF331B76676C17 /* Pods-meh.com.release.xcconfig */,
+				903BF7FAD035129F02A7C4FD /* Pods-Meh Deal.debug.xcconfig */,
+				12EBA40DFD69FE30FAB18F22 /* Pods-Meh Deal.release.xcconfig */,
+				DA7BD26D40DF2CF7259467A9 /* Pods-Meh Notification Service Extension.debug.xcconfig */,
+				C96094399D4370B4B3543C38 /* Pods-Meh Notification Service Extension.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		785D3EC820131C9B00EB1598 /* Meh Deal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 785D3ED820131C9B00EB1598 /* Build configuration list for PBXNativeTarget "Meh Deal" */;
+			buildPhases = (
+				62D3AEFB5B9B9A57E1960FA8 /* [CP] Check Pods Manifest.lock */,
+				785D3EC520131C9B00EB1598 /* Sources */,
+				785D3EC620131C9B00EB1598 /* Frameworks */,
+				785D3EC720131C9B00EB1598 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Meh Deal";
+			productName = "Meh Deal";
+			productReference = 785D3EC920131C9B00EB1598 /* Meh Deal.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		78952D8A1FD5BDCE000E0AAC /* meh.com */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 78952D9F1FD5BDCF000E0AAC /* Build configuration list for PBXNativeTarget "meh.com" */;
+			buildPhases = (
+				6D6117D46929F9FFCAF21ED0 /* [CP] Check Pods Manifest.lock */,
+				78952D871FD5BDCE000E0AAC /* Sources */,
+				78952D881FD5BDCE000E0AAC /* Frameworks */,
+				78952D891FD5BDCE000E0AAC /* Resources */,
+				785D3ED920131C9B00EB1598 /* Embed App Extensions */,
+				E59C2A7570867CAD4867AA44 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				785D3ED420131C9B00EB1598 /* PBXTargetDependency */,
+				78D1A6602218514E00AF75F9 /* PBXTargetDependency */,
+			);
+			name = meh.com;
+			productName = meh.com;
+			productReference = 78952D8B1FD5BDCE000E0AAC /* meh.com.app */;
+			productType = "com.apple.product-type.application";
+		};
+		78D1A6592218514E00AF75F9 /* Meh Notification Service Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 78D1A6642218514E00AF75F9 /* Build configuration list for PBXNativeTarget "Meh Notification Service Extension" */;
+			buildPhases = (
+				69392B07F2CC6919A5E43DBA /* [CP] Check Pods Manifest.lock */,
+				78D1A6562218514E00AF75F9 /* Sources */,
+				78D1A6572218514E00AF75F9 /* Frameworks */,
+				78D1A6582218514E00AF75F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Meh Notification Service Extension";
+			productName = "Meh Notification Service Extension";
+			productReference = 78D1A65A2218514E00AF75F9 /* Meh Notification Service Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		78952D831FD5BDCE000E0AAC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				DefaultBuildSystemTypeForWorkspace = Original;
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = "Kirin Patel";
+				TargetAttributes = {
+					785D3EC820131C9B00EB1598 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					78952D8A1FD5BDCE000E0AAC = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+					78D1A6592218514E00AF75F9 = {
+						CreatedOnToolsVersion = 10.1;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 78952D861FD5BDCE000E0AAC /* Build configuration list for PBXProject "meh.com" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 78952D821FD5BDCE000E0AAC;
+			productRefGroup = 78952D8C1FD5BDCE000E0AAC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				78952D8A1FD5BDCE000E0AAC /* meh.com */,
+				785D3EC820131C9B00EB1598 /* Meh Deal */,
+				78D1A6592218514E00AF75F9 /* Meh Notification Service Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		785D3EC720131C9B00EB1598 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78C57277226F8041005C5F37 /* GoogleService-Info.plist in Resources */,
+				785D3ED120131C9B00EB1598 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78952D891FD5BDCE000E0AAC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78952D9B1FD5BDCF000E0AAC /* LaunchScreen.storyboard in Resources */,
+				78C57276226F8041005C5F37 /* GoogleService-Info.plist in Resources */,
+				78952D981FD5BDCF000E0AAC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78D1A6582218514E00AF75F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		62D3AEFB5B9B9A57E1960FA8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Meh Deal-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		69392B07F2CC6919A5E43DBA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Meh Notification Service Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D6117D46929F9FFCAF21ED0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-meh.com-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E59C2A7570867CAD4867AA44 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-meh.com/Pods-meh.com-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CTFeedback/CTFeedback.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/QuickTableViewController/QuickTableViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyMarkdown/SwiftyMarkdown.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CTFeedback.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickTableViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyMarkdown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-meh.com/Pods-meh.com-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		785D3EC520131C9B00EB1598 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				785D3ECE20131C9B00EB1598 /* TodayViewController.swift in Sources */,
+				78C5727B2270B6C4005C5F37 /* Extensions.swift in Sources */,
+				78C572792270B6A7005C5F37 /* Structures.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78952D871FD5BDCE000E0AAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78C110DE211B97D100622810 /* DealLoader.swift in Sources */,
+				78952D8F1FD5BDCF000E0AAC /* AppDelegate.swift in Sources */,
+				7830BD991FD5C1EB00F3D371 /* DealViewController.swift in Sources */,
+				785C37FC1FD76D0D002CE08C /* SettingsViewController.swift in Sources */,
+				78C110DA211B974100622810 /* Poll.swift in Sources */,
+				784BED89211958D400F68B60 /* Theme.swift in Sources */,
+				78266BC1200FC7F400BF5BD8 /* Extensions.swift in Sources */,
+				78D5D7A7211D472C0085D4E2 /* HistoryTableViewCell.swift in Sources */,
+				78C110D6211B955700622810 /* Story.swift in Sources */,
+				7826E0EA1FD655400011AA23 /* ImagePageViewController.swift in Sources */,
+				78C110CF211B8D3600622810 /* HistoryNavigationViewController.swift in Sources */,
+				78B799172158852D00526816 /* BottomSheetViewController.swift in Sources */,
+				78C110CD211B8C7C00622810 /* HistoryTableViewController.swift in Sources */,
+				78C110D4211B94E200622810 /* Item.swift in Sources */,
+				7826E0EE1FD659320011AA23 /* ImageViewController.swift in Sources */,
+				78AD53AE2102F4AF0031E9B0 /* LoadingViewController.swift in Sources */,
+				781FCC5F20FE5D63009F35ED /* MainViewController.swift in Sources */,
+				78E2712721759202008375E0 /* SettingsNavigationViewController.swift in Sources */,
+				78C110D2211B948C00622810 /* Deal.swift in Sources */,
+				78C110E0211B99BB00622810 /* ThemeLoader.swift in Sources */,
+				78F7C21D2229AA5E00518183 /* EnlargedImageViewController.swift in Sources */,
+				78C110D8211B958D00622810 /* Topic.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78D1A6562218514E00AF75F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78D1A65D2218514E00AF75F9 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		785D3ED420131C9B00EB1598 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 785D3EC820131C9B00EB1598 /* Meh Deal */;
+			targetProxy = 785D3ED320131C9B00EB1598 /* PBXContainerItemProxy */;
+		};
+		78D1A6602218514E00AF75F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 78D1A6592218514E00AF75F9 /* Meh Notification Service Extension */;
+			targetProxy = 78D1A65F2218514E00AF75F9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		785D3ECF20131C9B00EB1598 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				785D3ED020131C9B00EB1598 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		78952D991FD5BDCF000E0AAC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				78952D9A1FD5BDCF000E0AAC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		785D3ED620131C9B00EB1598 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 903BF7FAD035129F02A7C4FD /* Pods-Meh Deal.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Meh Deal/Meh Deal.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T4GLZ43QVM;
+				INFOPLIST_FILE = "Meh Deal/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kirinpatel.meh.Meh-Deal";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		785D3ED720131C9B00EB1598 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12EBA40DFD69FE30FAB18F22 /* Pods-Meh Deal.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Meh Deal/Meh Deal.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T4GLZ43QVM;
+				INFOPLIST_FILE = "Meh Deal/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kirinpatel.meh.Meh-Deal";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		78952D9D1FD5BDCF000E0AAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		78952D9E1FD5BDCF000E0AAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		78952DA01FD5BDCF000E0AAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CDDDA797F244B5C653149C6 /* Pods-meh.com.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = meh.com/meh.com.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T4GLZ43QVM;
+				INFOPLIST_FILE = meh.com/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kirinpatel.meh;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		78952DA11FD5BDCF000E0AAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38CA4D8E12BF331B76676C17 /* Pods-meh.com.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = meh.com/meh.com.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T4GLZ43QVM;
+				INFOPLIST_FILE = meh.com/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kirinpatel.meh;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		78D1A6622218514E00AF75F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA7BD26D40DF2CF7259467A9 /* Pods-Meh Notification Service Extension.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_ENTITLEMENTS = "Meh Notification Service Extension/Meh Notification Service Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T4GLZ43QVM;
+				INFOPLIST_FILE = "Meh Notification Service Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kirinpatel.meh.Meh-Notification-Service-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		78D1A6632218514E00AF75F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C96094399D4370B4B3543C38 /* Pods-Meh Notification Service Extension.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_ENTITLEMENTS = "Meh Notification Service Extension/Meh Notification Service Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T4GLZ43QVM;
+				INFOPLIST_FILE = "Meh Notification Service Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kirinpatel.meh.Meh-Notification-Service-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		785D3ED820131C9B00EB1598 /* Build configuration list for PBXNativeTarget "Meh Deal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				785D3ED620131C9B00EB1598 /* Debug */,
+				785D3ED720131C9B00EB1598 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		78952D861FD5BDCE000E0AAC /* Build configuration list for PBXProject "meh.com" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78952D9D1FD5BDCF000E0AAC /* Debug */,
+				78952D9E1FD5BDCF000E0AAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		78952D9F1FD5BDCF000E0AAC /* Build configuration list for PBXNativeTarget "meh.com" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78952DA01FD5BDCF000E0AAC /* Debug */,
+				78952DA11FD5BDCF000E0AAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		78D1A6642218514E00AF75F9 /* Build configuration list for PBXNativeTarget "Meh Notification Service Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78D1A6622218514E00AF75F9 /* Debug */,
+				78D1A6632218514E00AF75F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 78952D831FD5BDCE000E0AAC /* Project object */;
+}

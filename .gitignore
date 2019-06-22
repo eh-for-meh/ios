@@ -1,0 +1,12 @@
+*.DS_Store
+/functions/node_modules/*
+
+functions/package-lock\.json
+
+firebase-debug\.log
+
+GoogleService-Info\.plist
+
+functions/\.idea/
+
+google-services\.json

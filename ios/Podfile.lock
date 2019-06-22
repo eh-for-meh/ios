@@ -1,0 +1,143 @@
+PODS:
+  - Crashlytics (3.10.5):
+    - Fabric (~> 1.7.9)
+  - CTFeedback (1.1.1)
+  - Fabric (1.7.9)
+  - Firebase/AdMob (5.7.0):
+    - Firebase/Core
+    - Google-Mobile-Ads-SDK (~> 7.32)
+  - Firebase/Core (5.7.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 5.1.1)
+  - Firebase/CoreOnly (5.7.0):
+    - FirebaseCore (= 5.1.2)
+  - Firebase/Database (5.7.0):
+    - Firebase/CoreOnly
+    - FirebaseDatabase (= 5.0.2)
+  - Firebase/Messaging (5.7.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (= 3.1.1)
+  - Firebase/Storage (5.7.0):
+    - Firebase/CoreOnly
+    - FirebaseStorage (= 3.0.1)
+  - FirebaseAnalytics (5.1.1):
+    - FirebaseCore (~> 5.1)
+    - FirebaseInstanceID (~> 3.2)
+    - GoogleAppMeasurement (~> 5.1)
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2.0)
+    - GoogleUtilities/MethodSwizzler (~> 5.2.0)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - nanopb (~> 0.3)
+  - FirebaseCore (5.1.2):
+    - GoogleUtilities/Logger (~> 5.2)
+  - FirebaseDatabase (5.0.2):
+    - FirebaseCore (~> 5.0)
+    - leveldb-library (~> 1.18)
+  - FirebaseInstanceID (3.2.1):
+    - FirebaseCore (~> 5.1)
+    - GoogleUtilities/Environment (~> 5.2)
+  - FirebaseMessaging (3.1.1):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - GoogleUtilities/Reachability (~> 5.2)
+    - Protobuf (~> 3.1)
+  - FirebaseStorage (3.0.1):
+    - FirebaseCore (~> 5.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - Google-Mobile-Ads-SDK (7.32.0)
+  - GoogleAppMeasurement (5.1.1):
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2.0)
+    - GoogleUtilities/MethodSwizzler (~> 5.2.0)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - nanopb (~> 0.3)
+  - GoogleUtilities/AppDelegateSwizzler (5.2.3):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (5.2.3)
+  - GoogleUtilities/Logger (5.2.3):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (5.2.3):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (5.2.3):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (5.2.3)"
+  - GoogleUtilities/Reachability (5.2.3):
+    - GoogleUtilities/Logger
+  - GTMSessionFetcher/Core (1.2.1)
+  - leveldb-library (1.20)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
+  - Nuke (7.3.2)
+  - Protobuf (3.6.1)
+  - QuickTableViewController (1.0.0)
+  - SwiftyMarkdown (0.5.1)
+
+DEPENDENCIES:
+  - Crashlytics (~> 3.10.5)
+  - CTFeedback
+  - Fabric (~> 1.7.9)
+  - Firebase/AdMob
+  - Firebase/Core
+  - Firebase/Database
+  - Firebase/Messaging
+  - Firebase/Storage
+  - Nuke
+  - QuickTableViewController
+  - SwiftyMarkdown
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Crashlytics
+    - CTFeedback
+    - Fabric
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseDatabase
+    - FirebaseInstanceID
+    - FirebaseMessaging
+    - FirebaseStorage
+    - Google-Mobile-Ads-SDK
+    - GoogleAppMeasurement
+    - GoogleUtilities
+    - GTMSessionFetcher
+    - leveldb-library
+    - nanopb
+    - Nuke
+    - Protobuf
+    - QuickTableViewController
+    - SwiftyMarkdown
+
+SPEC CHECKSUMS:
+  Crashlytics: 7f2e38d302d9da96475b3d64d86fb29e31a542b7
+  CTFeedback: 6f128606e0d26d46075c3fa9fc33884372df8675
+  Fabric: a2917d3895e4c1569b9c3170de7320ea1b1e6661
+  Firebase: 734a4f92957aa6c40e7ae3fda3d9359e1890aa87
+  FirebaseAnalytics: 993577e91157feb40945abedd6ab346d8a4b6ac8
+  FirebaseCore: 3a97432acb324b439fbed338e642f9cbb516a63d
+  FirebaseDatabase: 27be5ac5bc75e0b17537b2bbfada8258addcc8cd
+  FirebaseInstanceID: ea5af6920d0a4a29b40459d055bebe4a6c1333c4
+  FirebaseMessaging: 698c94dd1e3436346c29bb9c85dcdca4c4a0c30b
+  FirebaseStorage: 43f823b96b72a08539eba21a7de043348a69d4c6
+  Google-Mobile-Ads-SDK: 2aca87e46e860f1e1fc0fdc1201dd9caa4be9ba6
+  GoogleAppMeasurement: f7507b39b70ad0bd80b3d81518b2f43868974307
+  GoogleUtilities: 6f681e27050c5e130325e89fa0316dfca826f954
+  GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
+  leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  Nuke: a9a31bbd6c6723753ab024ef22057dcaaf046c1b
+  Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+  QuickTableViewController: a49fb6dc5623b9dbe301a03ac5c563099e234fbc
+  SwiftyMarkdown: 743af3e87931391bc4836b825fec3d98785b2e3a
+
+PODFILE CHECKSUM: 2406e203e47611b203ebba265fda603721a2751a
+
+COCOAPODS: 1.5.3
