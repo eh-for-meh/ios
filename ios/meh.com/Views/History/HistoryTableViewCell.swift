@@ -72,8 +72,10 @@ class HistoryTableViewCell: UITableViewCell {
     }
     var dealImage: UIImage! {
         didSet {
-            dealImageView.image = dealImage
-            animateLoadedImage()
+            if let dealImage = dealImage {
+                dealImageView.image = dealImage
+                animateLoadedImage()
+            }
         }
     }
     
@@ -109,6 +111,13 @@ class HistoryTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(false, animated: false)
+    }
+    
+    override func prepareForReuse() {
+        titleLabel.text = ""
+        dateLabel.text = ""
+        dealImage = nil
+        dealImageView.image = nil
     }
     
     required init?(coder aDecoder: NSCoder) {
