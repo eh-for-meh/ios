@@ -121,7 +121,7 @@ class HistoryTableViewController: UITableViewController {
     
     fileprivate func loadImage(deal: Deal, loadLast: Bool = false, completion: @escaping (_ image: UIImage) -> Void) {
         if let url = loadLast ? deal.photos.last : deal.photos.first {
-            if let image = URL(string: url.absoluteString.replacingOccurrences(of: "http", with: "https")) {
+            if let image = URL(string: url.absoluteString.replacingOccurrences(of: "http://", with: "https://")) {
                 ImagePipeline.shared.loadImage(
                     with: image,
                     completion: { response, _ in
