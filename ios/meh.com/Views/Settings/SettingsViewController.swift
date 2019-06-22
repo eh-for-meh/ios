@@ -23,6 +23,27 @@ class SettingsViewController: QuickTableViewController, UNUserNotificationCenter
     var radios: RadioSection!
     var interstitial: GADInterstitial!
     
+    let effectView: UIVisualEffectView = {
+        let vev = UIVisualEffectView()
+        vev.translatesAutoresizingMaskIntoConstraints = false
+        vev.isUserInteractionEnabled = true
+        vev.effect = UIBlurEffect(style: .light)
+        return vev
+    }()
+    
+    let timePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        datePicker.datePickerMode = .time
+        return datePicker
+    }()
+    
+    let closeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Close", for: .normal)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,6 +75,9 @@ class SettingsViewController: QuickTableViewController, UNUserNotificationCenter
         }
         
         radios.alwaysSelectsOneOption = true
+        
+        timePicker.addTarget(self, action: #selector(startTimeDiveChanged), for: .valueChanged)
+        closeButton.addTarget(self, action: #selector(closeTimePicker), for: .touchUpInside)
         
         setSectionOneRows()
     }
@@ -127,6 +151,8 @@ class SettingsViewController: QuickTableViewController, UNUserNotificationCenter
             let center = UNUserNotificationCenter.current()
             center.removeAllPendingNotificationRequests()
             UserDefaults.standard.set(false, forKey: "receiveNotifications")
+            UserDefaults.standard.set(false, forKey: "remindForMeh")
+            UserDefaults.standard.set("6:00 PM", forKey: "reminderTime")
             setSectionOneRows()
             Database.database().reference().child("notifications/\(Messaging.messaging().fcmToken!)").removeValue()
         }
@@ -134,8 +160,10 @@ class SettingsViewController: QuickTableViewController, UNUserNotificationCenter
     
     fileprivate func setMehRemindersEnabled(enabled: Bool) {
         if UserDefaults.standard.bool(forKey: "receiveNotifications") == true {
+            let reminderTimeAsString: String = UserDefaults.standard.string(forKey: "reminderTime") ?? "6:00 PM"
             Analytics.logEvent("setMehReminders", parameters: [
-                "recieveNotifications": enabled
+                "recieveNotifications": enabled,
+                "time": reminderTimeAsString
                 ])
             
             UserDefaults.standard.set(enabled, forKey: "remindForMeh")
@@ -146,13 +174,18 @@ class SettingsViewController: QuickTableViewController, UNUserNotificationCenter
                 content.title = "Today's deal is almost over!"
                 content.body = "Don't forget to press the meh button today"
                 content.sound = UNNotificationSound.default()
-                let date = Date(timeIntervalSinceReferenceDate: 82800)
-                let triggerDate = Calendar.current.dateComponents([.hour,.minute,.second], from: date)
+                let formatter = DateFormatter()
+                formatter.timeStyle = .short
+                formatter.defaultDate = Date(timeIntervalSinceReferenceDate: 0)
+                guard let testDate = formatter.date(from: reminderTimeAsString) else { return }
+                let triggerDate = Calendar.current.dateComponents([.hour,.minute,.second], from: testDate)
                 let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: true)
                 let request = UNNotificationRequest(identifier: "com.kirinpatel.meh", content: content, trigger: trigger)
                 center.add(request, withCompletionHandler: { (error) in
+                    print("hello?")
                     if error != nil {
                         UserDefaults.standard.set(false, forKey: "remindForMeh")
+                        UserDefaults.standard.set("6:00 PM", forKey: "reminderTime")
                         self.setSectionOneRows()
                         let alert = UIAlertController(title: "An Error Occurred", message: "An unexpected error occurred while enabling notifications.", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Ok", style: .default))
@@ -161,7 +194,9 @@ class SettingsViewController: QuickTableViewController, UNUserNotificationCenter
                 })
             } else {
                 center.removeAllPendingNotificationRequests()
+                UserDefaults.standard.set("6:00 PM", forKey: "reminderTime")
             }
+            setSectionOneRows()
         } else if enabled == true {
             let alert = UIAlertController(title: "Notifications Must Be Enabled", message: "In order to receive notifications to press meh for a deal, you must have notifications enabled!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default))
@@ -278,6 +313,41 @@ class SettingsViewController: QuickTableViewController, UNUserNotificationCenter
         }
     }
     
+    func openTimePicker()  {
+        effectView.frame = CGRect(x: 0.0,
+                                  y: (view.frame.height / 3) * 2,
+                                  width: view.frame.width,
+                                  height: view.frame.height / 3)
+        timePicker.frame = CGRect(x: 0.0,
+                                  y: 30.0,
+                                  width: effectView.frame.width,
+                                  height: effectView.frame.height - 30.0)
+        closeButton.frame = CGRect(x: effectView.frame.width - 65.0,
+                                   y: 0.0,
+                                   width: 65.0,
+                                   height: 30.0)
+        view.addSubview(effectView)
+        effectView.contentView.addSubview(timePicker)
+        effectView.contentView.addSubview(closeButton)
+        setSectionOneRows()
+    }
+    
+    @objc func startTimeDiveChanged(sender: UIDatePicker) {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        let time = formatter.string(from: sender.date)
+        UserDefaults.standard.set(time, forKey: "reminderTime")
+        setMehRemindersEnabled(enabled: true)
+        setSectionOneRows()
+    }
+    
+    @objc func closeTimePicker() {
+        effectView.removeFromSuperview()
+        timePicker.removeFromSuperview()
+        closeButton.removeFromSuperview()
+        setSectionOneRows()
+    }
+    
     fileprivate func setSectionOneRows() {
         notificationSwitch = SwitchRow(title: "Receive Notifications",
                                        switchValue: UserDefaults.standard.bool(forKey: "receiveNotifications"),
@@ -286,16 +356,31 @@ class SettingsViewController: QuickTableViewController, UNUserNotificationCenter
         mehReminderSwitch = SwitchRow(title: "Get Reminded to Press Meh",
                                       switchValue: UserDefaults.standard.bool(forKey: "remindForMeh"),
                                       action: didToggleSelection())
+        let reminderTime: String = UserDefaults.standard.string(forKey: "reminderTime") ?? "6:00 PM"
+        let mehReminderTime = NavigationRow(title: "Notificatiton Reminder Time",
+                                            subtitle: .rightAligned(reminderTime),
+                                            action: { _ in self.openTimePicker() })
         
-        var sectionOneRows: [SwitchRow<SwitchCell>] = [ notificationSwitch ]
-        if notificationSwitch.switchValue == true {
+        var sectionOneRows: [Row & RowStyle] = [ notificationSwitch ]
+        if UserDefaults.standard.bool(forKey: "receiveNotifications") {
             sectionOneRows.append(mehReminderSwitch)
+        }
+        if UserDefaults.standard.bool(forKey: "remindForMeh") {
+            sectionOneRows.append(mehReminderTime)
+        }
+        
+        var notificationsFooter = ""
+        if sectionOneRows.count > 1 {
+            notificationsFooter = "Mehathons are currently not supported by the reminder notifications. This is a limitation of meh.com, please comment on their forms, requesting them to add support for end dates on deals."
+            if mehReminderSwitch.switchValue {
+                notificationsFooter += "\n\nDaily meh deals reset at 12 AM EST (4 AM UTC)."
+            }
         }
         
         tableContents = [
             Section(title: "Notifications",
                     rows: sectionOneRows,
-                    footer: sectionOneRows.count > 1 ? "Mehathons are currently not supported by the reminder notifications. This is a limitation of meh.com, please comment on their forms, requesting them to add support for end dates on deals." : ""),
+                    footer: notificationsFooter),
             Section(title: "Deal History",
                     rows: [
                         SwitchRow(title: "Load images",
