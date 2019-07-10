@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="VvU-Jy-euu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VvU-Jy-euu">
                                 <rect key="frame" x="16" y="8" width="288" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                 <nil key="textColor"/>
@@ -31,14 +31,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k9y-aD-DoF">
-                                <rect key="frame" x="16" y="8" width="85" height="30"/>
+                                <rect key="frame" x="16" y="8" width="85" height="376"/>
                                 <state key="normal" title="Open in App"/>
                                 <connections>
                                     <action selector="viewButtonTouched:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="lTP-4i-FNd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGR-5D-Aeo">
-                                <rect key="frame" x="117" y="8" width="30" height="30"/>
+                                <rect key="frame" x="117" y="8" width="30" height="376"/>
                                 <state key="normal" title="Buy"/>
                                 <connections>
                                     <action selector="buyButtonTouched:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="jsD-xY-sNn"/>
@@ -60,6 +60,8 @@
                             <constraint firstItem="z7F-HI-rRo" firstAttribute="top" secondItem="VvU-Jy-euu" secondAttribute="bottom" id="Yxb-sL-CrT"/>
                             <constraint firstItem="z7F-HI-rRo" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="16" id="e2q-Oo-gJW"/>
                             <constraint firstItem="k9y-aD-DoF" firstAttribute="top" secondItem="z7F-HI-rRo" secondAttribute="bottom" id="euB-lc-wqa"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="bottom" secondItem="BGR-5D-Aeo" secondAttribute="bottom" constant="16" id="fWC-eP-O97"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="bottom" secondItem="k9y-aD-DoF" secondAttribute="bottom" constant="16" id="owB-Fl-DFs"/>
                             <constraint firstItem="k9y-aD-DoF" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="16" id="uzn-HC-y1N"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ssy-KU-ocm"/>
