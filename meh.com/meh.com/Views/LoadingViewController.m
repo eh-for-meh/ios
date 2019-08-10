@@ -33,6 +33,7 @@
     [ThemeLoader.shared loadThemeWithCompletion: ^(Theme * theme) {
         DealViewController *view = [[DealViewController alloc] init];
         view.theme = theme;
+        view.modalPresentationStyle = UIModalPresentationFullScreen;
         view.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentViewController:view animated:true completion:NULL];
     }];
