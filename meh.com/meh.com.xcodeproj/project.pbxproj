@@ -15,11 +15,11 @@
 		7857E4A622822987005EB7F7 /* DealPhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7857E4A522822987005EB7F7 /* DealPhotosCollectionViewCell.swift */; };
 		78B6F609227DD4B000C5F8E5 /* ThemeLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B6F608227DD4B000C5F8E5 /* ThemeLoader.swift */; };
 		78B6F60D227DD6A600C5F8E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78B6F60C227DD6A500C5F8E5 /* GoogleService-Info.plist */; };
+		78C7D7EC22FE9555009571C9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C7D7EB22FE9555009571C9 /* LoadingView.swift */; };
 		78F197F4227D512B0086C264 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F197F3227D512B0086C264 /* AppDelegate.swift */; };
 		78F197FB227D512C0086C264 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78F197FA227D512C0086C264 /* Assets.xcassets */; };
 		78F197FE227D512C0086C264 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78F197FC227D512C0086C264 /* LaunchScreen.storyboard */; };
 		78F19807227D54180086C264 /* Meh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F19806227D54180086C264 /* Meh.swift */; };
-		78F1980C227D568D0086C264 /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F1980B227D568D0086C264 /* LoadingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,15 +32,13 @@
 		7857E4A522822987005EB7F7 /* DealPhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealPhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		78B6F608227DD4B000C5F8E5 /* ThemeLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeLoader.swift; sourceTree = "<group>"; };
 		78B6F60C227DD6A500C5F8E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		78C7D7EB22FE9555009571C9 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		78F197F0227D512B0086C264 /* meh.com.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meh.com.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78F197F3227D512B0086C264 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78F197FA227D512C0086C264 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78F197FD227D512C0086C264 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		78F197FF227D512C0086C264 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78F19806227D54180086C264 /* Meh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meh.swift; sourceTree = "<group>"; };
-		78F19809227D568D0086C264 /* meh.com-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "meh.com-Bridging-Header.h"; sourceTree = "<group>"; };
-		78F1980A227D568D0086C264 /* LoadingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadingViewController.h; sourceTree = "<group>"; };
-		78F1980B227D568D0086C264 /* LoadingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadingViewController.m; sourceTree = "<group>"; };
 		AF0F2F45250F184A110A0914 /* Pods_meh_com.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_meh_com.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -137,9 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				7857E4A222822922005EB7F7 /* Deal */,
-				78F1980A227D568D0086C264 /* LoadingViewController.h */,
-				78F1980B227D568D0086C264 /* LoadingViewController.m */,
-				78F19809227D568D0086C264 /* meh.com-Bridging-Header.h */,
+				78C7D7EB22FE9555009571C9 /* LoadingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -272,7 +268,7 @@
 				7857E4A42282292C005EB7F7 /* DealPhotosCollectionView.swift in Sources */,
 				7857E49F228214C0005EB7F7 /* DealLoader.swift in Sources */,
 				78F19807227D54180086C264 /* Meh.swift in Sources */,
-				78F1980C227D568D0086C264 /* LoadingViewController.m in Sources */,
+				78C7D7EC22FE9555009571C9 /* LoadingView.swift in Sources */,
 				78B6F609227DD4B000C5F8E5 /* ThemeLoader.swift in Sources */,
 				7857E4A622822987005EB7F7 /* DealPhotosCollectionViewCell.swift in Sources */,
 				78F197F4227D512B0086C264 /* AppDelegate.swift in Sources */,
@@ -420,7 +416,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T4GLZ43QVM;
 				INFOPLIST_FILE = meh.com/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -443,7 +439,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T4GLZ43QVM;
 				INFOPLIST_FILE = meh.com/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
