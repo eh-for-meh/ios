@@ -13,9 +13,9 @@ target 'meh.com' do
   pod 'Firebase/Database'
   pod 'Firebase/Messaging'
   pod 'Firebase/Storage'
+  pod 'markymark'
   pod 'Nuke'
   pod 'QuickTableViewController'
-  pod 'SwiftyMarkdown'
 end
 
 target 'Meh Deal' do

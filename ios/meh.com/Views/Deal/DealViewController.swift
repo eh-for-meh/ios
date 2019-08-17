@@ -9,7 +9,6 @@
 import UIKit
 import FirebaseAnalytics
 import FirebaseDatabase
-import SwiftyMarkdown
 
 protocol ItemViewPageControlDelegate: class {
     func itemCountChanged(_ count: Int)

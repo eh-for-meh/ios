@@ -70,6 +70,7 @@ PODS:
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.1)
   - leveldb-library (1.20)
+  - markymark (9.1.3)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
@@ -78,7 +79,6 @@ PODS:
   - Nuke (7.3.2)
   - Protobuf (3.6.1)
   - QuickTableViewController (1.0.0)
-  - SwiftyMarkdown (0.5.1)
 
 DEPENDENCIES:
   - Crashlytics (~> 3.10.5)
@@ -89,9 +89,9 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Messaging
   - Firebase/Storage
+  - markymark
   - Nuke
   - QuickTableViewController
-  - SwiftyMarkdown
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -110,11 +110,11 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMSessionFetcher
     - leveldb-library
+    - markymark
     - nanopb
     - Nuke
     - Protobuf
     - QuickTableViewController
-    - SwiftyMarkdown
 
 SPEC CHECKSUMS:
   Crashlytics: 7f2e38d302d9da96475b3d64d86fb29e31a542b7
@@ -132,12 +132,12 @@ SPEC CHECKSUMS:
   GoogleUtilities: 6f681e27050c5e130325e89fa0316dfca826f954
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  markymark: 469815a183deffacca870448e066c29e1a4b84cd
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Nuke: a9a31bbd6c6723753ab024ef22057dcaaf046c1b
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   QuickTableViewController: a49fb6dc5623b9dbe301a03ac5c563099e234fbc
-  SwiftyMarkdown: 743af3e87931391bc4836b825fec3d98785b2e3a
 
-PODFILE CHECKSUM: 2406e203e47611b203ebba265fda603721a2751a
+PODFILE CHECKSUM: 2453ca41900b42b61d0c1ed57be7778dc5e983ca
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.4
