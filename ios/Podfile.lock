@@ -94,7 +94,7 @@ DEPENDENCIES:
   - QuickTableViewController
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Crashlytics
     - CTFeedback
     - Fabric
@@ -140,4 +140,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 2453ca41900b42b61d0c1ed57be7778dc5e983ca
 
-COCOAPODS: 1.7.4
+COCOAPODS: 1.8.4

@@ -43,6 +43,7 @@ class LoadingViewController: UIViewController {
             }, completion: { _ in
                 let mainViewController = MainViewController()
                 mainViewController.view.backgroundColor = theme.backgroundColor
+                mainViewController.modalPresentationStyle = .fullScreen
                 
                 self.present(mainViewController, animated: false)
             })
