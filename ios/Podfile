@@ -6,7 +6,6 @@ target 'meh.com' do
   use_frameworks!
   
   pod 'Crashlytics', '~> 3.10.5'
-  pod 'CTFeedback'
   pod 'Fabric', '~> 1.7.9'
   pod 'Firebase/AdMob'
   pod 'Firebase/Core'

@@ -7,11 +7,9 @@
 //
 
 import UIKit
-import CTFeedback
 import FirebaseAnalytics
 import FirebaseDatabase
 import FirebaseMessaging
-import FirebaseStorage
 import GoogleMobileAds
 import QuickTableViewController
 import UserNotifications
@@ -267,16 +265,6 @@ class SettingsViewController: QuickTableViewController, UNUserNotificationCenter
         })
     }
     
-    fileprivate func loadFeedback() {
-        let feedbackView = CTFeedbackViewController()
-        feedbackView.useHTML = false
-        feedbackView.hidesTopicCell = true
-        feedbackView.useCustomCallback = true
-        feedbackView.delegate = self
-        feedbackView.hidesAppNameCell = true
-        navigationController?.pushViewController(feedbackView, animated: true)
-    }
-    
     fileprivate func loadInterstitial() -> GADInterstitial {
         Analytics.logEvent("loaded_ad", parameters: [
             "type":"interstitial",
@@ -389,13 +377,6 @@ class SettingsViewController: QuickTableViewController, UNUserNotificationCenter
                         ],
                     footer: "Please note, loading images has significantly high network usage and should not be used by users with limited data/bandwidth cellular plans."),
             radios,
-            Section(title: "Feedback",
-                    rows: [
-                        NavigationRow(title: "Provide feedback",
-                                      subtitle: .belowTitle("Help improve the app"),
-                                      action: { _ in self.loadFeedback() }),
-                        ],
-                    footer: "Any feedback submitted is completely anonymous and will be used to improve the app."),
             Section(title: "Support the Developer",
                     rows: [
                         NavigationRow(title: "Watch Ad",
@@ -416,81 +397,6 @@ class SettingsViewController: QuickTableViewController, UNUserNotificationCenter
             }
         })
         present(alert, animated: true)
-    }
-}
-
-extension SettingsViewController: CTFeedbackViewControllerDelegate {
-    
-    func feedbackViewController(_ controller: CTFeedbackViewController!, didFinishWithCustomCallback email: String!, topic: String!, content: String!, attachment: UIImage!) {
-        if let content = content {
-            let key = Database.database().reference().child("feedback").childByAutoId().key
-            let alert = UIAlertController(title: "Submitting Feedback", message: "Please wait while your response is submitted...", preferredStyle: .alert)
-            self.present(alert, animated: true)
-            Database.database().reference().child("feedback/\(key)").setValue([
-                "time": NSDate().timeIntervalSince1970 * 1000,
-                "topic": "Feedback",
-                "content": content,
-                "appBuild": controller.appBuild,
-                "appVersion": controller.appVersion,
-                "systemVersion": controller.systemVersion,
-                "platformString": controller.platformString
-                ], withCompletionBlock: { (error, _) in
-                    alert.dismiss(animated: true) {
-                        if let error = error {
-                            let alert = UIAlertController(title: "Error Submitting Feedback",
-                                                          message: error.localizedDescription,
-                                                          preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "Ok", style: .default))
-                            self.present(alert, animated: true)
-                        } else {
-                            if let attachment = attachment {
-                                self.uploadAttachment(key: key, attachment: attachment)
-                            } else {
-                                self.showSimpleAlert(title: "Thank you for the Feedback",
-                                                     message: "Your message will be reviewed and addressed asap.") {
-                                                        self.navigationController?.popViewController(animated: true)
-                                }
-                            }
-                        }
-                    }
-            })
-        } else {
-            let alert = UIAlertController(title: "Unable to Submit Feedback", message: "A message must be provided to submit feedback.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default))
-            self.present(alert, animated: true)
-        }
-    }
-    
-    fileprivate func uploadAttachment(key: String, attachment: UIImage) {
-        let alert = UIAlertController(title: "Uploading Attachment", message: "Please wait while the attachment is uploaded...", preferredStyle: .alert)
-        self.present(alert, animated: true)
-        
-        if let data = UIImageJPEGRepresentation(attachment, 0.3) {
-            let ref = Storage.storage().reference(withPath: "feedback/\(key).JPG")
-            let metaData = StorageMetadata()
-            metaData.contentType = "image/jpg"
-            let uploadTask = ref.putData(data, metadata: metaData)
-            
-            uploadTask.observe(.success) { snapshot in
-                uploadTask.removeAllObservers()
-                alert.dismiss(animated: true)
-                self.showSimpleAlert(title: "Thank you for the Feedback",
-                                     message: "Your message will be reviewed and addressed asap.") {
-                                        self.navigationController?.popViewController(animated: true)
-                }
-            }
-            
-            uploadTask.observe(.failure) { snapshot in
-                uploadTask.removeAllObservers()
-                alert.dismiss(animated: true)
-                self.showSimpleAlert(title: "Unable to Upload Attachment",
-                                     message: "Your feedback was submitted but the attachment provided was unable to be uploaded.")
-            }
-        } else {
-            alert.dismiss(animated: true)
-            self.showSimpleAlert(title: "Unable to Upload Attachment",
-                                 message: "Your feedback was submitted but the attachment provided was unable to be uploaded.")
-        }
     }
 }
 

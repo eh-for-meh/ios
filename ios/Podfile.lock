@@ -1,7 +1,6 @@
 PODS:
   - Crashlytics (3.10.5):
     - Fabric (~> 1.7.9)
-  - CTFeedback (1.1.1)
   - Fabric (1.7.9)
   - Firebase/AdMob (5.7.0):
     - Firebase/Core
@@ -82,7 +81,6 @@ PODS:
 
 DEPENDENCIES:
   - Crashlytics (~> 3.10.5)
-  - CTFeedback
   - Fabric (~> 1.7.9)
   - Firebase/AdMob
   - Firebase/Core
@@ -96,7 +94,6 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Crashlytics
-    - CTFeedback
     - Fabric
     - Firebase
     - FirebaseAnalytics
@@ -118,7 +115,6 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Crashlytics: 7f2e38d302d9da96475b3d64d86fb29e31a542b7
-  CTFeedback: 6f128606e0d26d46075c3fa9fc33884372df8675
   Fabric: a2917d3895e4c1569b9c3170de7320ea1b1e6661
   Firebase: 734a4f92957aa6c40e7ae3fda3d9359e1890aa87
   FirebaseAnalytics: 993577e91157feb40945abedd6ab346d8a4b6ac8
@@ -138,6 +134,6 @@ SPEC CHECKSUMS:
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   QuickTableViewController: a49fb6dc5623b9dbe301a03ac5c563099e234fbc
 
-PODFILE CHECKSUM: 2453ca41900b42b61d0c1ed57be7778dc5e983ca
+PODFILE CHECKSUM: 210daf362fa62114dc081f12ec87dc96a2bf7d28
 
 COCOAPODS: 1.8.4
