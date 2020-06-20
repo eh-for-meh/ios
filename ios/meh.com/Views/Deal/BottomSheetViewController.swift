@@ -59,7 +59,7 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
         let segmentControl = UISegmentedControl()
         segmentControl.translatesAutoresizingMaskIntoConstraints = false
         segmentControl.insertSegment(withTitle: "Features", at: 0, animated: true)
-        segmentControl.insertSegment(withTitle: "Spec", at: 1, animated: true)
+        segmentControl.insertSegment(withTitle: "Specs", at: 1, animated: true)
         segmentControl.insertSegment(withTitle: "Story", at: 2, animated: true)
         segmentControl.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
         return segmentControl
@@ -248,7 +248,12 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
                                          size: CGSize(width: self.view.frame.width, height: self.view.frame.height))
                 self.view.backgroundColor = deal.theme.accentColor
                 self.pullTab.backgroundColor = deal.theme.backgroundColor
-                self.segmentControl.tintColor = deal.theme.backgroundColor
+                self.segmentControl.backgroundColor = deal.theme.dark ? .white : .black
+                if #available(iOS 13.0, *) {
+                    self.segmentControl.selectedSegmentTintColor = deal.theme.backgroundColor
+                } else {
+                    self.segmentControl.tintColor = deal.theme.backgroundColor
+                }
                 self.segmentControl.selectedSegmentIndex = 0
                 self.titleLabel.textColor = textColor
                 self.buyButton.backgroundColor = deal.theme.backgroundColor
@@ -363,6 +368,8 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
             segmentControl.selectedSegmentIndex = 0
             
             [featureView, specificationView, storyView].forEach {
+                $0.styling.headingStyling.fontsForLevels = [.boldSystemFont(ofSize: 25)]
+                $0.styling.headingStyling.textColorsForLevels = [deal.theme.backgroundColor]
                 $0.styling.paragraphStyling.baseFont = .systemFont(ofSize: 20)
                 $0.styling.paragraphStyling.textColor = deal.theme.backgroundColor
                 $0.styling.listStyling.baseFont = .systemFont(ofSize: 20)
@@ -376,8 +383,12 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
             featureView.text = deal.features
             featureView.sizeToFit()
             featureView.layoutIfNeeded()
-            
+            print(deal.specifications)
             specificationView.text = deal.specifications
+                // Manually format titles
+                .replacingOccurrences(of: "Specs\r\n====", with: "# Specs")
+                .replacingOccurrences(of: "What's in the Box?\r\n====", with: "# What's in the Box?")
+                .replacingOccurrences(of: "Price Comparison\r\n====", with: "# Price Comparison")
             specificationView.sizeToFit()
             specificationView.layoutIfNeeded()
             
