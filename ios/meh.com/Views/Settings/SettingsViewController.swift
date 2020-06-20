@@ -180,7 +180,6 @@ class SettingsViewController: QuickTableViewController, UNUserNotificationCenter
                 let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: true)
                 let request = UNNotificationRequest(identifier: "com.kirinpatel.meh", content: content, trigger: trigger)
                 center.add(request, withCompletionHandler: { (error) in
-                    print("hello?")
                     if error != nil {
                         UserDefaults.standard.set(false, forKey: "remindForMeh")
                         UserDefaults.standard.set("6:00 PM", forKey: "reminderTime")
