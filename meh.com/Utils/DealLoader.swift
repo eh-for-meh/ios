@@ -17,7 +17,7 @@ protocol DealUpdateListener {
 
 class DealLoader {
     
-    static let sharedInstance = DealLoader()
+    static let shared = DealLoader()
     
     private var databaseURL: String?
     var deal: Deal?

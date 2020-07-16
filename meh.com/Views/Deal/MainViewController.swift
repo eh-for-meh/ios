@@ -97,7 +97,7 @@ class MainViewController: UIViewController {
         setupDealView()
         addBottomSheet()
         setupView()
-        DealLoader.sharedInstance.addListener(listener: self)
+        DealLoader.shared.addListener(listener: self)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -181,7 +181,7 @@ extension MainViewController: DealUpdateListener {
     }
     
     func dealUpdated() {
-        if let deal = DealLoader.sharedInstance.deal {
+        if let deal = DealLoader.shared.deal {
             DispatchQueue.main.async {
                 self.deal = deal
             }

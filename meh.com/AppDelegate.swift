@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         if notification.request.content.title == "Today's deal is almost over!" {
-            DealLoader.sharedInstance.loadCurrentDeal(completion: { result in
+            DealLoader.shared.loadCurrentDeal(completion: { result in
                 let dealId: String = UserDefaults.standard.string(forKey: "meh") ?? ""
                 switch result {
                 case .failure:
@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 }
             })
         } else {
-            DealLoader.sharedInstance.loadCurrentDeal()
+            DealLoader.shared.loadCurrentDeal()
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             completionHandler([.alert, .badge, .sound])
         }

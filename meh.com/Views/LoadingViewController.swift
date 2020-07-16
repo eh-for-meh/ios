@@ -23,7 +23,7 @@ class LoadingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        DealLoader.sharedInstance.addListener(listener: self)
+        DealLoader.shared.addListener(listener: self)
     }
     
     fileprivate func setupView() {
@@ -40,7 +40,7 @@ extension LoadingViewController: DealUpdateListener {
     }
     
     func dealUpdated() {
-        if let deal = DealLoader.sharedInstance.deal {
+        if let deal = DealLoader.shared.deal {
             DispatchQueue.main.async {
                 UIView.animate(withDuration: 0.5, animations: {
                     self.view.backgroundColor = UIColor.color(fromHexString: deal.theme.backgroundColor)
