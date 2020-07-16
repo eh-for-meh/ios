@@ -8,8 +8,6 @@
 
 import UIKit
 import SafariServices
-import FirebaseAnalytics
-import FirebaseDatabase
 
 class MainViewController: UIViewController {
     
@@ -20,18 +18,18 @@ class MainViewController: UIViewController {
                 dealView.deal = deal
                 bottomSheet.deal = deal
                 UIView.animate(withDuration: 0.5, animations: {
-                    self.view.backgroundColor = deal.theme.backgroundColor
-                    self.optionsStackView.backgroundColor = deal.theme.dark ? .white : .black
+                    self.view.backgroundColor = UIColor.color(fromHexString: deal.theme.backgroundColor)
+                    self.optionsStackView.backgroundColor = deal.theme.foreground == "dark" ? .white : .black
                     self.settingsButton.alpha = 1
-                    self.settingsButton.tintColor = deal.theme.accentColor
+                    self.settingsButton.tintColor = UIColor.color(fromHexString: deal.theme.accentColor)
                     self.historyButton.alpha = 1
-                    self.historyButton.tintColor = deal.theme.accentColor
+                    self.historyButton.tintColor = UIColor.color(fromHexString: deal.theme.accentColor)
                     self.closeButton.alpha = 1
-                    self.closeButton.tintColor = deal.theme.accentColor
+                    self.closeButton.tintColor = UIColor.color(fromHexString: deal.theme.accentColor)
                     self.shareButton.alpha = 1
-                    self.shareButton.tintColor = deal.theme.accentColor
+                    self.shareButton.tintColor = UIColor.color(fromHexString: deal.theme.accentColor)
                     self.viewForumButton.alpha = 1
-                    self.viewForumButton.tintColor = deal.theme.accentColor
+                    self.viewForumButton.tintColor = UIColor.color(fromHexString: deal.theme.accentColor)
                 })
             }
         }
@@ -96,55 +94,36 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupDealView()
         addBottomSheet()
         setupView()
-        
-        if deal == nil {
-            setupDealObserver()
-        }
+        DealLoader.sharedInstance.addListener(listener: self)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        if let deal = deal {
-            return deal.theme.dark ? .lightContent : .default
-        }
-        
-        return .default
+        guard let deal = deal else { return .default }
+        return deal.theme.foreground == "dark" ? .lightContent : .default
     }
     
     @objc func handleViewHistory() {
-        if let deal = deal {
-            Analytics.logEvent("viewedHistory", parameters: [:])
-            let historyView = HistoryNavigationViewController()
-            
-            historyView.theme = deal.theme
-            
-            historyView.modalPresentationStyle = .fullScreen
-            historyView.modalTransitionStyle = .crossDissolve
-            
-            present(historyView, animated: true)
-        }
+        guard deal != nil else { return }
+        let historyView = HistoryNavigationViewController()
+        historyView.modalPresentationStyle = .fullScreen
+        historyView.modalTransitionStyle = .crossDissolve
+        present(historyView, animated: true)
     }
     
     @objc func handleShare() {
-        if let deal = deal {
-            let shareContent = "Chech out this deal from the eh for meh app. \(deal.url)"
-            Analytics.logEvent("shared", parameters: ["deal": deal.id])
-            let activityViewController = UIActivityViewController(activityItems: [shareContent as NSString], applicationActivities: nil)
-            present(activityViewController, animated: true)
-        }
+        guard let deal = deal else { return }
+        let shareContent = "Chech out this deal from the eh for meh app. \(deal.url)"
+        let activityViewController = UIActivityViewController(activityItems: [shareContent as NSString], applicationActivities: nil)
+        present(activityViewController, animated: true)
     }
     
     @objc func handleViewForum() {
-        if let deal = deal {
-            if let topic = deal.topic {
-                Analytics.logEvent("viewedForum", parameters: ["deal": deal.id])
-                let view = SFSafariViewController(url: topic.url)
-                present(view, animated: true)
-            }
-        }
+        guard let deal = deal, let topic = deal.topic else { return }
+        let view = SFSafariViewController(url: topic.url)
+        present(view, animated: true)
     }
     
     @objc func handleClose() {
@@ -152,21 +131,12 @@ class MainViewController: UIViewController {
     }
     
     @objc func handleViewSettings() {
-        if let deal = deal {
-            Analytics.logEvent("viewedSettings", parameters: [:])
-            present(SettingsNavigationViewController(), animated: true)
-        }
-    }
-    
-    fileprivate func setupDealObserver() {
-        DealLoader.sharedInstance.loadCurrentDeal(completion: { deal in
-            self.deal = deal
-        })
+        guard deal != nil else { return }
+        present(SettingsNavigationViewController(), animated: true)
     }
     
     fileprivate func addBottomSheet() {
-        if hasAddedBottomSheet { return }
-        
+        guard hasAddedBottomSheet == false else { return }
         addChildViewController(bottomSheet)
         view.addSubview(bottomSheet.view)
         bottomSheet.didMove(toParentViewController: self)
@@ -201,5 +171,24 @@ class MainViewController: UIViewController {
         
         optionsStackView.addArrangedSubview(shareButton)
         optionsStackView.addArrangedSubview(viewForumButton)
+    }
+}
+
+extension MainViewController: DealUpdateListener {
+    
+    func dealUpdateInitiated() {
+        // TODO
+    }
+    
+    func dealUpdated() {
+        if let deal = DealLoader.sharedInstance.deal {
+            DispatchQueue.main.async {
+                self.deal = deal
+            }
+        }
+    }
+    
+    func dealUpdateFailed(error: Error) {
+        // TODO
     }
 }

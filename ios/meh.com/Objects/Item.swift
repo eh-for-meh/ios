@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Item {
+struct Item: Codable {
     var id: String
     var condition: String
     var price: CGFloat

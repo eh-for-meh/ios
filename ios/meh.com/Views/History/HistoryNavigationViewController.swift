@@ -11,37 +11,12 @@ import GoogleMobileAds
 
 class HistoryNavigationViewController: UINavigationController {
     
-    var theme: Theme! {
-        didSet {
-            setTheme()
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationBar.prefersLargeTitles = true
         loadBannerView()
         pushViewController(HistoryTableViewController(), animated: true)
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        if let theme = theme {
-            return theme.dark ? .lightContent : .default
-        }
-        
-        return .default
-    }
-    
-    fileprivate func setTheme() {
-        UIView.animate(withDuration: 0.5) {
-            self.view.backgroundColor = self.theme.dark ? .black : .white
-            let barStyle: UIBarStyle = self.theme.dark ? .black : .default
-            let tintColor: UIColor = self.theme.dark ? .white : .black
-            self.navigationBar.barStyle = barStyle
-            self.navigationBar.tintColor = tintColor
-            self.toolbar.barStyle = barStyle
-        }
     }
     
     fileprivate func loadBannerView() {

@@ -31,9 +31,7 @@
 		78C110D4211B94E200622810 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C110D3211B94E200622810 /* Item.swift */; };
 		78C110D6211B955700622810 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C110D5211B955700622810 /* Story.swift */; };
 		78C110D8211B958D00622810 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C110D7211B958D00622810 /* Topic.swift */; };
-		78C110DA211B974100622810 /* Poll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C110D9211B974100622810 /* Poll.swift */; };
 		78C110DE211B97D100622810 /* DealLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C110DD211B97D100622810 /* DealLoader.swift */; };
-		78C110E0211B99BB00622810 /* ThemeLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C110DF211B99BB00622810 /* ThemeLoader.swift */; };
 		78C57276226F8041005C5F37 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78C57275226F8041005C5F37 /* GoogleService-Info.plist */; };
 		78C57277226F8041005C5F37 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78C57275226F8041005C5F37 /* GoogleService-Info.plist */; };
 		78C572792270B6A7005C5F37 /* Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C572782270B6A7005C5F37 /* Structures.swift */; };
@@ -109,10 +107,8 @@
 		78C110D3211B94E200622810 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		78C110D5211B955700622810 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		78C110D7211B958D00622810 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
-		78C110D9211B974100622810 /* Poll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poll.swift; sourceTree = "<group>"; };
 		78C110DD211B97D100622810 /* DealLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealLoader.swift; sourceTree = "<group>"; };
-		78C110DF211B99BB00622810 /* ThemeLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeLoader.swift; sourceTree = "<group>"; };
-		78C57275226F8041005C5F37 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		78C57275226F8041005C5F37 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		78C572782270B6A7005C5F37 /* Structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structures.swift; sourceTree = "<group>"; };
 		78C5727A2270B6C4005C5F37 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		78D1A65A2218514E00AF75F9 /* Meh Notification Service Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Meh Notification Service Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,7 +171,6 @@
 			children = (
 				78266BC0200FC7F400BF5BD8 /* Extensions.swift */,
 				78C110DD211B97D100622810 /* DealLoader.swift */,
-				78C110DF211B99BB00622810 /* ThemeLoader.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -261,7 +256,6 @@
 				78C110D5211B955700622810 /* Story.swift */,
 				784BED88211958D400F68B60 /* Theme.swift */,
 				78C110D7211B958D00622810 /* Topic.swift */,
-				78C110D9211B974100622810 /* Poll.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -540,10 +534,9 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-meh.com/Pods-meh.com-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/QuickTableViewController/QuickTableViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/markymark/markymark.framework",
@@ -551,10 +544,9 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickTableViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/markymark.framework",
@@ -586,7 +578,6 @@
 				78952D8F1FD5BDCF000E0AAC /* AppDelegate.swift in Sources */,
 				7830BD991FD5C1EB00F3D371 /* DealViewController.swift in Sources */,
 				785C37FC1FD76D0D002CE08C /* SettingsViewController.swift in Sources */,
-				78C110DA211B974100622810 /* Poll.swift in Sources */,
 				784BED89211958D400F68B60 /* Theme.swift in Sources */,
 				78266BC1200FC7F400BF5BD8 /* Extensions.swift in Sources */,
 				78D5D7A7211D472C0085D4E2 /* HistoryTableViewCell.swift in Sources */,
@@ -601,7 +592,6 @@
 				781FCC5F20FE5D63009F35ED /* MainViewController.swift in Sources */,
 				78E2712721759202008375E0 /* SettingsNavigationViewController.swift in Sources */,
 				78C110D2211B948C00622810 /* Deal.swift in Sources */,
-				78C110E0211B99BB00622810 /* ThemeLoader.swift in Sources */,
 				78F7C21D2229AA5E00518183 /* EnlargedImageViewController.swift in Sources */,
 				78C110D8211B958D00622810 /* Topic.swift in Sources */,
 			);

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Story {
+struct Story: Codable {
     var title: String
     var body: String
 }

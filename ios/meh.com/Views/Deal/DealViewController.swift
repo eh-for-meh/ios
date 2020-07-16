@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import FirebaseAnalytics
-import FirebaseDatabase
 
 protocol ItemViewPageControlDelegate: class {
     func itemCountChanged(_ count: Int)
@@ -112,20 +110,18 @@ class DealViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if deal != nil {
-            return deal.theme.dark ? .lightContent : .default
+            return deal.theme.foreground == "dark" ? .lightContent : .default
         }
         
         return .default
     }
     
     @objc func handleMeh() {
-        Analytics.logEvent("pressedMeh", parameters: [:])
         rotateMehButton()
         webView.loadRequest(URLRequest(url: URL(string: "https://meh.com/")!))
     }
     
     @objc func handleClose() {
-        Analytics.logEvent("closeWebView", parameters: [:])
         effectView.isHidden = true
     }
     
@@ -209,7 +205,7 @@ class DealViewController: UIViewController {
         
         // Checks to see if deal is sold out. If it is AND it is the current
         // deal, then the price will be shown as "SOLD OUT".
-        if deal.soldOut && !deal.isPreviousDeal {
+        if deal.soldOut != nil {
             priceLabel.text = "SOLD OUT"
         } else {
             priceLabel.text = calculatePrices(deal.items)
@@ -226,14 +222,14 @@ class DealViewController: UIViewController {
         let mehPressedFor = UserDefaults.standard.string(forKey: "meh")
         UIView.animate(withDuration: 0.5, animations: {
             self.itemView.alpha = 1
-            self.pageControl.pageIndicatorTintColor = theme.accentColor
-            self.mehButton.backgroundColor = theme.accentColor
-            self.mehButton.tintColor = theme.backgroundColor
-            self.mehButton.setTitleColor(theme.backgroundColor, for: .normal)
-            self.mehButton.isHidden = mehPressedFor == self.deal.id || self.deal.isPreviousDeal
-            self.priceLabel.textColor = theme.accentColor
-            self.pageControl.currentPageIndicatorTintColor = theme.dark ? .white : .black
-            self.titleLabel.textColor = theme.accentColor
+            self.pageControl.pageIndicatorTintColor = UIColor.color(fromHexString: theme.accentColor)
+            self.mehButton.backgroundColor = UIColor.color(fromHexString: theme.accentColor)
+            self.mehButton.tintColor = UIColor.color(fromHexString: theme.backgroundColor)
+            self.mehButton.setTitleColor(UIColor.color(fromHexString: theme.backgroundColor), for: .normal)
+            self.mehButton.isHidden = mehPressedFor == self.deal.id
+            self.priceLabel.textColor = UIColor.color(fromHexString: theme.accentColor)
+            self.pageControl.currentPageIndicatorTintColor = theme.foreground == "dark" ? .white : .black
+            self.titleLabel.textColor = UIColor.color(fromHexString: theme.accentColor)
         })
     }
     
@@ -318,7 +314,6 @@ extension DealViewController: UIWebViewDelegate {
                     present(alert, animated: true)
                 }
                 UserDefaults.standard.set(deal.id, forKey: "meh")
-                Analytics.logEvent("meh", parameters: [:])
                 self.effectView.isHidden = true
                 self.mehButton.isHidden = true
             }

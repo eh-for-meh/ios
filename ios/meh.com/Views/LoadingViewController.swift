@@ -22,31 +22,42 @@ class LoadingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .white
-        
         setupView()
-        loadMainViewController()
+        DealLoader.sharedInstance.addListener(listener: self)
     }
     
     fileprivate func setupView() {
+        view.backgroundColor = .white
         view.addSubview(titleLabel)
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
+}
+
+extension LoadingViewController: DealUpdateListener {
+    func dealUpdateInitiated() {
+        // TODO
+    }
     
-    fileprivate func loadMainViewController() {
-        ThemeLoader.sharedInstance.loadTheme(completion: { theme in
-            UIView.animate(withDuration: 0.5, animations: {
-                self.view.backgroundColor = theme.backgroundColor
-                self.titleLabel.alpha = 0
-            }, completion: { _ in
-                let mainViewController = MainViewController()
-                mainViewController.view.backgroundColor = theme.backgroundColor
-                mainViewController.modalPresentationStyle = .fullScreen
-                
-                self.present(mainViewController, animated: false)
-            })
-        })
+    func dealUpdated() {
+        if let deal = DealLoader.sharedInstance.deal {
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.view.backgroundColor = UIColor.color(fromHexString: deal.theme.backgroundColor)
+                    self.titleLabel.alpha = 0
+                }, completion: { _ in
+                    let mainViewController = MainViewController()
+                    mainViewController.view.backgroundColor = UIColor.color(fromHexString: deal.theme.backgroundColor)
+                    mainViewController.modalPresentationStyle = .fullScreen
+                    self.present(mainViewController, animated: false) {
+                        mainViewController.deal = deal
+                    }
+                })
+            }
+        }
+    }
+    
+    func dealUpdateFailed(error: Error) {
+        // TODO
     }
 }

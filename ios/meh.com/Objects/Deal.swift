@@ -8,14 +8,12 @@
 
 import Foundation
 
-class Deal {
-    
-    var id: String
+struct Deal: Codable {
+    var id: String 
     var features: String
-    var isPreviousDeal: Bool = false
     var items: [Item] = []
     var photos: [URL] = []
-    var soldOut: Bool = false
+    var soldOut: String?
     var specifications: String
     var story: Story
     var theme: Theme
@@ -23,14 +21,14 @@ class Deal {
     var topic: Topic?
     var url: URL
     var date: Date?
-    
-    init(id: String, title: String, features: String, specifications: String, story: Story, theme: Theme, url: URL) {
-        self.id = id
-        self.title = title
-        self.features = features
-        self.specifications = specifications
-        self.theme = theme
-        self.story = story
-        self.url = url
-    }
+}
+
+struct PreviousDeal: Codable {
+    var flavorText: String
+    var hasViewed: Bool
+    var hasVoted: Bool
+    var id: String
+    var title: String
+    var url: String
+    var photo: String
 }

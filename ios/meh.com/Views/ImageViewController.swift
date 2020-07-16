@@ -78,8 +78,8 @@ class ImageViewController: UIViewController {
     }
     
     fileprivate func downloadImage() {
-        if !image.absoluteString.contains("https") {
-            image = URL(string: image.absoluteString.replacingOccurrences(of: "http", with: "https"))
+        if !image.absoluteString.contains("https://") {
+            image = URL(string: image.absoluteString.replacingOccurrences(of: "http://", with: "https://"))
         }
         
         ImagePipeline.shared.loadImage(

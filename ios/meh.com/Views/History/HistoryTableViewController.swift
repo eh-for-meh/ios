@@ -7,9 +7,8 @@
 //
 
 import UIKit
+import SafariServices
 import StoreKit
-import FirebaseAnalytics
-import FirebaseDatabase
 import Nuke
 
 class HistoryTableViewController: UITableViewController {
@@ -17,15 +16,14 @@ class HistoryTableViewController: UITableViewController {
     let cellIdentifier = "previousDealCell"
     let reviewAskInterval: Double = 86400.0
     let lastTimeReviewAsked = UserDefaults.standard.double(forKey: "lastTimeReviewWasAsked")
-    var previousDeals = [Deal]()
+    var previousDeals: [PreviousDeal] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .clear
+        view.backgroundColor = .white
         
         navigationItem.title = "History"
-        tableView.separatorStyle = .none
         
         tableView.register(HistoryTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         
@@ -57,21 +55,20 @@ class HistoryTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let dealView = MainViewController()
         let previousDeal = previousDeals[indexPath.row]
-        dealView.deal = previousDeal
-        dealView.view.backgroundColor = previousDeal.theme.backgroundColor
-        dealView.modalPresentationStyle = .currentContext
-        dealView.modalTransitionStyle = .crossDissolve
-        present(dealView, animated: true)
+        if let url = URL(string: previousDeal.url) {
+            let view = SFSafariViewController(url: url)
+            present(view, animated: true)
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! HistoryTableViewCell
         
-        cell.deal = previousDeals[indexPath.row]
+        let previousDeal = previousDeals[indexPath.row]
+        cell.deal = previousDeal
         if UserDefaults.standard.bool(forKey: "loadHistoryImages") {
-            loadImage(deal: cell.deal, completion: { image in
+            loadImage(url: previousDeal.photo, completion: { image in
                 if cell.deal.id == self.previousDeals[indexPath.row].id {
                     cell.dealImage = image
                 }
@@ -86,54 +83,33 @@ class HistoryTableViewController: UITableViewController {
     }
     
     fileprivate func loadData() {
-        if let toLast = UserDefaults.standard.object(forKey: "dealHistoryCount") as? Int {
-            Database.database().reference().child("previousDeal").queryOrdered(byChild: "time").queryLimited(toLast: UInt(toLast) + 1).observeSingleEvent(of: .value) { snapshot in
-                self.previousDeals.removeAll()
-                
-                for child in snapshot.children.allObjects.reversed().dropFirst() {
-                    let childSnapshot = child as! DataSnapshot
-                    
-                    DealLoader.sharedInstance.loadDeal(forDeal: childSnapshot.key, completion: { deal in
-                        self.previousDeals.append(deal)
-                        
-                        self.tableView.reloadData()
-                    })
+        let defaultToLast: Int = UIDevice.current.userInterfaceIdiom == .pad ? 51 : 21
+        let toLast: Int = UserDefaults.standard.object(forKey: "dealHistoryCount") as? Int ?? defaultToLast
+        DealLoader.sharedInstance.loadPreviousDeals { result in
+            switch result {
+            case .success(let previousDeals):
+                let visibleDeals = previousDeals.dropFirst().dropLast(previousDeals.count - toLast - 1)
+                visibleDeals.forEach({ self.previousDeals.append($0) })
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
                 }
-            }
-        } else {
-            let toLast: UInt = UIDevice.current.userInterfaceIdiom == .pad ? 51 : 21
-            
-            Database.database().reference().child("previousDeal").queryOrdered(byChild: "time").queryLimited(toLast: toLast).observeSingleEvent(of: .value) { snapshot in
-                self.previousDeals.removeAll()
-                
-                for child in snapshot.children.allObjects.reversed().dropFirst() {
-                    let childSnapshot = child as! DataSnapshot
-                    
-                    DealLoader.sharedInstance.loadDeal(forDeal: childSnapshot.key, completion: { deal in
-                        self.previousDeals.append(deal)
-                        
-                        self.tableView.reloadData()
-                    })
-                }
+                break
+            case .failure(let error):
+                // TODO
+                break
             }
         }
     }
     
-    fileprivate func loadImage(deal: Deal, loadLast: Bool = false, completion: @escaping (_ image: UIImage) -> Void) {
-        if let url = loadLast ? deal.photos.last : deal.photos.first {
-            if let image = URL(string: url.absoluteString.replacingOccurrences(of: "http://", with: "https://")) {
-                ImagePipeline.shared.loadImage(
-                    with: image,
-                    completion: { response, _ in
-                        if response != nil, let image = response?.image {
-                            completion(image)
-                        } else {
-                            self.loadImage(deal: deal,
-                                           loadLast: true,
-                                           completion: completion)
-                        }
-                })
-            }
+    fileprivate func loadImage(url: String, completion: @escaping (_ image: UIImage) -> Void) {
+        if let image = URL(string: url.replacingOccurrences(of: "http://", with: "https://")) {
+            ImagePipeline.shared.loadImage(
+                with: image,
+                completion: { response, _ in
+                    if response != nil, let image = response?.image {
+                        completion(image)
+                    }
+            })
         }
     }
 }

@@ -47,17 +47,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         if notification.request.content.title == "Today's deal is almost over!" {
-            DealLoader.sharedInstance.loadCurrentDeal(completion: { deal in
+            DealLoader.sharedInstance.loadCurrentDeal(completion: { result in
                 let dealId: String = UserDefaults.standard.string(forKey: "meh") ?? ""
-                
-                // Only show notification to press meh for day if it has not
-                // already been pressed by a user.
-                if deal.id != dealId {
+                switch result {
+                case .failure:
+                    // Show notification if network call fails to ensure that
+                    // notification is displayed.
                     AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                     completionHandler([.alert, .badge, .sound])
+                    break
+                case .success(let deal):
+                    // Only show notification to press meh for day if it has not
+                    // already been pressed by a user.
+                    if deal.id != dealId {
+                        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+                        completionHandler([.alert, .badge, .sound])
+                    }
+                    break
                 }
             })
         } else {
+            DealLoader.sharedInstance.loadCurrentDeal()
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             completionHandler([.alert, .badge, .sound])
         }

@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-struct Theme {
-    var backgroundColor: UIColor
-    var accentColor: UIColor
-    var dark: Bool
+struct Theme: Codable {
+    var backgroundColor: String
+    var accentColor: String
+    var foreground: String
 }

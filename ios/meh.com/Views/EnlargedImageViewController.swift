@@ -47,10 +47,10 @@ class EnlargedImageViewController: UIViewController {
     
     var theme: Theme! {
         didSet {
-            if theme.dark {
+            if theme.foreground == "dark" {
                 effectView.effect = UIBlurEffect(style: .dark)
             }
-            closeButton.tintColor = theme.accentColor
+//            closeButton.tintColor = theme.accentColor
         }
     }
     

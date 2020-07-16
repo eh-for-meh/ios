@@ -47,27 +47,9 @@ class HistoryTableViewCell: UITableViewCell {
     var dealImageViewLeftConstraing: NSLayoutConstraint!
     var dealImageViewWidthContraint: NSLayoutConstraint!
     
-    var deal: Deal! {
+    var deal: PreviousDeal! {
         didSet {
             titleLabel.text = deal.title
-            titleLabel.textColor = deal.theme.accentColor
-            if let date = deal.date {
-                let currentDate = NSDate().timeIntervalSince1970
-                if currentDate - date.timeIntervalSince1970 > 2629743 {
-                    let months: Int = Int(currentDate - date.timeIntervalSince1970) / 2629743
-                    dateLabel.text = "\(months) month\(months > 1 ? "s" : "") ago"
-                } else if currentDate - date.timeIntervalSince1970 > 604800 {
-                    let weeks: Int = Int(currentDate - date.timeIntervalSince1970) / 604800
-                    dateLabel.text = "\(weeks) week\(weeks > 1 ? "s" : "") ago"
-                } else {
-                    let days: Int = Int(currentDate - date.timeIntervalSince1970) / 86400
-                    dateLabel.text = "\(days) day\(days > 1  ?"s" : "") ago"
-                }
-            }
-            dateLabel.textColor = deal.theme.accentColor
-            backgroundColor = .clear
-            contentView.backgroundColor = .clear
-            card.backgroundColor = deal.theme.backgroundColor
         }
     }
     var dealImage: UIImage! {

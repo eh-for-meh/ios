@@ -8,7 +8,6 @@
 
 import UIKit
 import SafariServices
-import FirebaseAnalytics
 import GoogleMobileAds
 import markymark
 
@@ -222,8 +221,7 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func handleBuy() {
-        if let url = URL(string: "https://meh.com/account/signin?returnurl=https%3A%2F%2Fmeh.com%2F%23checkout"), let deal = deal {
-            Analytics.logEvent("buy", parameters: ["deal": deal.id])
+        if let url = URL(string: "https://meh.com/account/signin?returnurl=https%3A%2F%2Fmeh.com%2F%23checkout") {
             let view = SFSafariViewController(url: url)
             present(view, animated: true)
         }
@@ -231,12 +229,12 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
     
     fileprivate func animateView() {
         if let deal = deal {
-            let textColor: UIColor = deal.theme.backgroundColor
+            let textColor: UIColor = UIColor.color(fromHexString: deal.theme.backgroundColor)
             setupDeal()
             if view.backgroundColor == .clear {
-                view.backgroundColor = deal.theme.accentColor
-                pullTab.backgroundColor = deal.theme.backgroundColor
-                buyButton.backgroundColor = deal.theme.backgroundColor
+                view.backgroundColor = UIColor.color(fromHexString: deal.theme.accentColor)
+                pullTab.backgroundColor = UIColor.color(fromHexString: deal.theme.backgroundColor)
+                buyButton.backgroundColor = UIColor.color(fromHexString: deal.theme.backgroundColor)
             }
             UIView.animate(withDuration: 0.5,
                            delay: 0,
@@ -246,23 +244,23 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
                            animations: {
                 self.view.frame = CGRect(origin: CGPoint(x: 0, y: self.yMax),
                                          size: CGSize(width: self.view.frame.width, height: self.view.frame.height))
-                self.view.backgroundColor = deal.theme.accentColor
-                self.pullTab.backgroundColor = deal.theme.backgroundColor
-                self.segmentControl.backgroundColor = deal.theme.dark ? .white : .black
+                self.view.backgroundColor = UIColor.color(fromHexString: deal.theme.accentColor)
+                self.pullTab.backgroundColor = UIColor.color(fromHexString: deal.theme.backgroundColor)
+                self.segmentControl.backgroundColor = deal.theme.foreground == "dark" ? .white : .black
                 if #available(iOS 13.0, *) {
-                    self.segmentControl.selectedSegmentTintColor = deal.theme.backgroundColor
+                    self.segmentControl.selectedSegmentTintColor = UIColor.color(fromHexString: deal.theme.backgroundColor)
                 } else {
-                    self.segmentControl.tintColor = deal.theme.backgroundColor
+                    self.segmentControl.tintColor = UIColor.color(fromHexString: deal.theme.backgroundColor)
                 }
                 self.segmentControl.selectedSegmentIndex = 0
                 self.titleLabel.textColor = textColor
-                self.buyButton.backgroundColor = deal.theme.backgroundColor
-                self.buyButton.tintColor = deal.theme.accentColor
-                self.buyButton.setTitleColor(deal.theme.accentColor, for: .normal)
-                if deal.isPreviousDeal || deal.soldOut {
+                self.buyButton.backgroundColor = UIColor.color(fromHexString: deal.theme.backgroundColor)
+                self.buyButton.tintColor = UIColor.color(fromHexString: deal.theme.accentColor)
+                self.buyButton.setTitleColor(UIColor.color(fromHexString: deal.theme.accentColor), for: .normal)
+                if deal.soldOut != nil {
                     self.buyButton.alpha = 0
                 }
-                self.storyTitleLabel.textColor = deal.theme.backgroundColor
+                self.storyTitleLabel.textColor = UIColor.color(fromHexString: deal.theme.backgroundColor)
             })
         }
     }
@@ -369,26 +367,22 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
             
             [featureView, specificationView, storyView].forEach {
                 $0.styling.headingStyling.fontsForLevels = [.boldSystemFont(ofSize: 25)]
-                $0.styling.headingStyling.textColorsForLevels = [deal.theme.backgroundColor]
+                $0.styling.headingStyling.textColorsForLevels = [UIColor.color(fromHexString: deal.theme.backgroundColor)]
                 $0.styling.paragraphStyling.baseFont = .systemFont(ofSize: 20)
-                $0.styling.paragraphStyling.textColor = deal.theme.backgroundColor
+                $0.styling.paragraphStyling.textColor = UIColor.color(fromHexString: deal.theme.backgroundColor)
                 $0.styling.listStyling.baseFont = .systemFont(ofSize: 20)
                 $0.styling.listStyling.bulletFont = .systemFont(ofSize: 20)
-                $0.styling.listStyling.bulletColor = deal.theme.backgroundColor
-                $0.styling.listStyling.textColor = deal.theme.backgroundColor
+                $0.styling.listStyling.bulletColor = UIColor.color(fromHexString: deal.theme.backgroundColor)
+                $0.styling.listStyling.textColor = UIColor.color(fromHexString: deal.theme.backgroundColor)
                 $0.styling.linkStyling.baseFont = .systemFont(ofSize: 20)
-                $0.styling.linkStyling.textColor = deal.theme.backgroundColor
+                $0.styling.linkStyling.textColor = UIColor.color(fromHexString: deal.theme.backgroundColor)
             }
             
             featureView.text = deal.features
             featureView.sizeToFit()
             featureView.layoutIfNeeded()
-            print(deal.specifications)
             specificationView.text = deal.specifications
-                // Manually format titles
-                .replacingOccurrences(of: "Specs\r\n====", with: "# Specs")
-                .replacingOccurrences(of: "What's in the Box?\r\n====", with: "# What's in the Box?")
-                .replacingOccurrences(of: "Price Comparison\r\n====", with: "# Price Comparison")
+                .replacingOccurrences(of: "\r", with: "\n")
             specificationView.sizeToFit()
             specificationView.layoutIfNeeded()
             
