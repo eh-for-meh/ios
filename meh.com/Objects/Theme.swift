@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 struct Theme: Codable {
     var backgroundColor: String
