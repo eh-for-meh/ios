@@ -37,8 +37,11 @@ class ImagePageViewController: UIPageViewController {
         }
     }
 
-    override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String : Any]? = nil) {
-        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: options)
+    override init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey : Any]? = nil) {
+// Local variable inserted by Swift 4.2 migrator.
+let options = convertFromOptionalUIPageViewControllerOptionsKeyDictionary(options)
+
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: convertToOptionalUIPageViewControllerOptionsKeyDictionary(options))
     }
 
     required init?(coder: NSCoder) {
@@ -81,7 +84,7 @@ class ImagePageViewController: UIPageViewController {
 extension ImagePageViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
+        guard let viewControllerIndex = orderedViewControllers.firstIndex(of: viewController) else {
             return nil
         }
         
@@ -99,7 +102,7 @@ extension ImagePageViewController: UIPageViewControllerDataSource {
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
+        guard let viewControllerIndex = orderedViewControllers.firstIndex(of: viewController) else {
             return nil
         }
         
@@ -122,7 +125,7 @@ extension ImagePageViewController: UIPageViewControllerDataSource {
     
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
         guard let firstViewController = viewControllers?.first,
-            let firstViewControllerIndex = orderedViewControllers.index(of: firstViewController) else {
+            let firstViewControllerIndex = orderedViewControllers.firstIndex(of: firstViewController) else {
                 return 0
         }
         return firstViewControllerIndex
@@ -160,4 +163,16 @@ extension ImagePageViewController: ImageViewControllerDelegate {
             delegate.imageLongPressed(image)
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromOptionalUIPageViewControllerOptionsKeyDictionary(_ input: [UIPageViewController.OptionsKey: Any]?) -> [String: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalUIPageViewControllerOptionsKeyDictionary(_ input: [String: Any]?) -> [UIPageViewController.OptionsKey: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIPageViewController.OptionsKey(rawValue: key), value)})
 }

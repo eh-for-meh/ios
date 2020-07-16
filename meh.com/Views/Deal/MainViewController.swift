@@ -137,17 +137,17 @@ class MainViewController: UIViewController {
     
     fileprivate func addBottomSheet() {
         guard hasAddedBottomSheet == false else { return }
-        addChildViewController(bottomSheet)
+        addChild(bottomSheet)
         view.addSubview(bottomSheet.view)
-        bottomSheet.didMove(toParentViewController: self)
+        bottomSheet.didMove(toParent: self)
         bottomSheet.view.frame = CGRect(origin: CGPoint(x: 0, y: view.frame.maxY),
                                         size: CGSize(width: view.frame.width, height: view.frame.height))
     }
     
     fileprivate func setupDealView() {
-        addChildViewController(dealView)
+        addChild(dealView)
         view.addSubview(dealView.view)
-        dealView.didMove(toParentViewController: self)
+        dealView.didMove(toParent: self)
         dealView.view.frame = CGRect(origin: CGPoint(x: 0, y: 0),
                                      size: CGSize(width: view.frame.width, height: view.frame.height - 100))
     }

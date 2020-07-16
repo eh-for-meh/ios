@@ -171,7 +171,7 @@ class SettingsViewController: QuickTableViewController, UNUserNotificationCenter
                 let content = UNMutableNotificationContent()
                 content.title = "Today's deal is almost over!"
                 content.body = "Don't forget to press the meh button today"
-                content.sound = UNNotificationSound.default()
+                content.sound = UNNotificationSound.default
                 let formatter = DateFormatter()
                 formatter.timeStyle = .short
                 formatter.defaultDate = Date(timeIntervalSinceReferenceDate: 0)
@@ -246,7 +246,8 @@ class SettingsViewController: QuickTableViewController, UNUserNotificationCenter
                             self.setSectionOneRows()
                         })
                         alert.addAction(UIAlertAction(title: "Settings", style: .default) { _ in
-                            UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!)
+                            guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+                            UIApplication.shared.open(url)
                         })
                         self.present(alert, animated: true)
                     })
@@ -411,4 +412,9 @@ extension SettingsViewController: GADInterstitialDelegate {
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
         interstitial = loadInterstitial()
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }
