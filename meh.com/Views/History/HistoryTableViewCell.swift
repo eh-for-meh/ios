@@ -34,14 +34,6 @@ class HistoryTableViewCell: UITableViewCell {
         return label
     }()
     
-    let dateLabel: UILabel = {
-       let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 1
-        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        return label
-    }()
-    
     let size: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 125 : 50;
     
     var dealImageViewLeftConstraing: NSLayoutConstraint!
@@ -80,15 +72,10 @@ class HistoryTableViewCell: UITableViewCell {
         
         card.addSubview(titleLabel)
         titleLabel.topAnchor.constraint(equalTo: dealImageView.topAnchor, constant: 0).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: dealImageView.bottomAnchor, constant: 0).isActive = true
+        titleLabel.bottomAnchor.constraint(equalTo: card.bottomAnchor, constant: -8).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: dealImageView.rightAnchor, constant: 8).isActive = true
         titleLabel.rightAnchor.constraint(equalTo: card.rightAnchor, constant: -8).isActive = true
-        
-        card.addSubview(dateLabel)
-        dateLabel.topAnchor.constraint(equalTo: dealImageView.bottomAnchor, constant: 8).isActive = true
-        dateLabel.bottomAnchor.constraint(equalTo: card.bottomAnchor, constant: -8).isActive = true
-        dateLabel.leftAnchor.constraint(equalTo: dealImageView.rightAnchor, constant: 8).isActive = true
-        dateLabel.rightAnchor.constraint(equalTo: card.rightAnchor, constant: -8).isActive = true
+        titleLabel.heightAnchor.constraint(equalToConstant: size).isActive = true
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -97,7 +84,6 @@ class HistoryTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         titleLabel.text = ""
-        dateLabel.text = ""
         dealImage = nil
         dealImageView.image = nil
     }
