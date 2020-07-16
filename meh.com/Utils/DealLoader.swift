@@ -6,7 +6,7 @@
 //  Copyright © 2018 Kirin Patel. All rights reserved.
 //
 
-import Foundation
+import FirebaseAnalytics
 import UIKit
 
 protocol DealUpdateListener {
@@ -49,10 +49,12 @@ class DealLoader {
     
     func loadCurrentDeal(completion: @escaping (Result<Deal, Error>) -> Void = { _ in }) {
         guard let databaseURL = databaseURL else { return }
+        Analytics.logEvent("loadCurrentDeal", parameters: ["eventType": "initiated"])
         listeners.forEach({ $0.dealUpdateInitiated() })
         if let url = URL(string: "\(databaseURL)/currentDeal/deal.json") {
             let urlSession = URLSession(configuration: .default).dataTask(with: url) { (data, response, error) in
                 if let error = error {
+                    Analytics.logEvent("loadCurrentDeal", parameters: ["eventType": "failed", "reason": "network"])
                     completion(.failure(error))
                     self.listeners.forEach({ $0.dealUpdateFailed(error: error) })
                 }
@@ -62,8 +64,10 @@ class DealLoader {
                         let deal = try JSONDecoder().decode(Deal.self, from: data)
                         self.deal = deal
                         self.listeners.forEach({ $0.dealUpdated() })
+                        Analytics.logEvent("loadCurrentDeal", parameters: ["eventType": "success"])
                         completion(.success(deal))
                     } catch let error {
+                        Analytics.logEvent("loadCurrentDeal", parameters: ["eventType": "failed", "reason": "decode"])
                         completion(.failure(error))
                         self.listeners.forEach({ $0.dealUpdateFailed(error: error) })
                     }
@@ -76,15 +80,19 @@ class DealLoader {
     func loadPreviousDeals(completion: @escaping (Result<[PreviousDeal], Error>) -> Void) {
         if let url = URL(string: "https://meh.com/forum/topics.json?category=deals&sort=date-created") {
             let urlSession = URLSession(configuration: .default).dataTask(with: url) { (data, response, error) in
+                Analytics.logEvent("loadPreviousDeals", parameters: ["eventType": "initiated"])
                 if let error = error {
+                    Analytics.logEvent("loadPreviousDeals", parameters: ["eventType": "failed", "reason": "network"])
                     completion(.failure(error))
                 }
                 
                 if let data = data {
                     do {
                         let previousDeals = try JSONDecoder().decode([PreviousDeal].self, from: data)
+                        Analytics.logEvent("loadPreviousDeals", parameters: ["eventType": "success"])
                         completion(.success(previousDeals))
                     } catch let error {
+                        Analytics.logEvent("loadPreviousDeals", parameters: ["eventType": "failed", "reason": "decode"])
                         completion(.failure(error))
                     }
                 }
