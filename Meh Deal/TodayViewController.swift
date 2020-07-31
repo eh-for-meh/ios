@@ -36,7 +36,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     @IBAction func buyButtonTouched(_ sender: UIButton) {
-        if let url = URL(string: "https://meh.com/account/signin?returnurl=https%3A%2F%2Fmeh.com%2F%23checkout") {
+        if let url = URL(string: "https://meh.com/#checkout") {
             self.extensionContext!.open(url, completionHandler: nil)
         }
     }
@@ -52,7 +52,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             self.buyButton.isHidden = true
         }
         isLoadingDeal = true
-        let url = URL(string: "https://meh-app.firebaseio.com/currentDeal/deal.json")!
+        guard let path = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist") else { return }
+        guard let dict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] else { return }
+        guard let url = URL(string: "\(dict["DATABASE_URL"] as? String ?? "")/currentDeal/deal.json") else { return }
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
             guard let data = data else {
                 return self.isLoadingDeal = false
