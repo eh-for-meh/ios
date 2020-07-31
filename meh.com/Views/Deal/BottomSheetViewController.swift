@@ -221,7 +221,7 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func handleBuy() {
-        if let url = URL(string: "https://meh.com/account/signin?returnurl=https%3A%2F%2Fmeh.com%2F%23checkout") {
+        if let url = URL(string: "https://meh.com/#checkout") {
             let view = SFSafariViewController(url: url)
             present(view, animated: true)
         }
