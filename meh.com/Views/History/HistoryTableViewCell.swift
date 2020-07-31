@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Nuke
 
 class HistoryTableViewCell: UITableViewCell {
     
@@ -42,13 +43,16 @@ class HistoryTableViewCell: UITableViewCell {
     var deal: PreviousDeal! {
         didSet {
             titleLabel.text = deal.title
-        }
-    }
-    var dealImage: UIImage! {
-        didSet {
-            if let dealImage = dealImage {
-                dealImageView.image = dealImage
-                animateLoadedImage()
+            if let image = URL(string: deal.photo.replacingOccurrences(of: "http://", with: "https://")) {
+                let options = ImageLoadingOptions(placeholder: nil,
+                                                  transition: .fadeIn(duration: 0.3),
+                                                  failureImage: nil,
+                                                  failureImageTransition: nil,
+                                                  contentModes: nil,
+                                                  tintColors: nil)
+                Nuke.loadImage(with: image, options: options, into: dealImageView) { _ in
+                    self.animateLoadedImage()
+                }
             }
         }
     }
@@ -84,7 +88,6 @@ class HistoryTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         titleLabel.text = ""
-        dealImage = nil
         dealImageView.image = nil
     }
     
@@ -98,8 +101,6 @@ class HistoryTableViewCell: UITableViewCell {
         UIView.animate(withDuration: 0.5,
                        delay: 0,
                        options: [.preferredFramesPerSecond60, .curveEaseOut, .allowUserInteraction],
-                       animations: {
-                        self.layoutIfNeeded()
-        })
+                       animations: { self.layoutIfNeeded() })
     }
 }

@@ -82,15 +82,14 @@ class ImageViewController: UIViewController {
             image = URL(string: image.absoluteString.replacingOccurrences(of: "http://", with: "https://"))
         }
         
-        ImagePipeline.shared.loadImage(
-            with: image,
-            progress: { response, _, _ in
-                self.imageView.image = response?.image
-            },
-            completion: { response, _ in
-                self.progressView.stopAnimating()
-                self.imageView.image = response?.image
-            }
-        )
+        let options = ImageLoadingOptions(placeholder: nil,
+                                          transition: .fadeIn(duration: 0.3),
+                                          failureImage: nil,
+                                          failureImageTransition: nil,
+                                          contentModes: nil,
+                                          tintColors: nil)
+        Nuke.loadImage(with: image, options: options, into: self.imageView) { _ in
+            self.progressView.stopAnimating()
+        }
     }
 }

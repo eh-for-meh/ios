@@ -65,15 +65,7 @@ class HistoryTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! HistoryTableViewCell
         
-        let previousDeal = previousDeals[indexPath.row]
-        cell.deal = previousDeal
-        if UserDefaults.standard.bool(forKey: "loadHistoryImages") {
-            loadImage(url: previousDeal.photo, completion: { image in
-                if cell.deal.id == self.previousDeals[indexPath.row].id {
-                    cell.dealImage = image
-                }
-            })
-        }
+        cell.deal = previousDeals[indexPath.row]
         
         return cell
     }
@@ -94,22 +86,10 @@ class HistoryTableViewController: UITableViewController {
                     self.tableView.reloadData()
                 }
                 break
-            case .failure(let error):
+            case .failure(_):
                 // TODO
                 break
             }
-        }
-    }
-    
-    fileprivate func loadImage(url: String, completion: @escaping (_ image: UIImage) -> Void) {
-        if let image = URL(string: url.replacingOccurrences(of: "http://", with: "https://")) {
-            ImagePipeline.shared.loadImage(
-                with: image,
-                completion: { response, _ in
-                    if response != nil, let image = response?.image {
-                        completion(image)
-                    }
-            })
         }
     }
 }
