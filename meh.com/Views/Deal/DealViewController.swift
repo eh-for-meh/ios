@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 protocol ItemViewPageControlDelegate: class {
     func itemCountChanged(_ count: Int)
@@ -66,27 +67,15 @@ class DealViewController: UIViewController {
         return label
     }()
     
-    let effectView: UIVisualEffectView = {
-        let vev = UIVisualEffectView()
-        vev.translatesAutoresizingMaskIntoConstraints = false
-        vev.effect = UIBlurEffect(style: .light)
-        vev.isHidden = true
-        return vev
-    }()
-    
-    let webView: UIWebView = {
-        let wb = UIWebView()
+    let webView: WKWebView = {
+        let wb = WKWebView()
         wb.translatesAutoresizingMaskIntoConstraints = false
-        wb.layer.cornerRadius = 5.0
-        wb.layer.masksToBounds = true
         return wb
     }()
     
-    let closeButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(handleClose), for: .touchUpInside)
-        return button
+    let webViewViewController: UIViewController = {
+        let viewController = UIViewController()
+        return viewController
     }()
     
     var deal: Deal! {
@@ -105,7 +94,7 @@ class DealViewController: UIViewController {
         
         setupView()
         
-        webView.delegate = self
+        webView.navigationDelegate = self
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -118,11 +107,8 @@ class DealViewController: UIViewController {
     
     @objc func handleMeh() {
         rotateMehButton()
-        webView.loadRequest(URLRequest(url: URL(string: "https://meh.com/")!))
-    }
-    
-    @objc func handleClose() {
-        effectView.isHidden = true
+        guard let url = URL(string: "https://meh.com") else { return }
+        webView.load(URLRequest(url: url))
     }
     
     @objc func handlePageChange() {
@@ -179,23 +165,12 @@ class DealViewController: UIViewController {
         mehButton.rightAnchor.constraint(equalTo: buttonView.rightAnchor).isActive = true
         mehButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
         
-        view.addSubview(effectView)
-        effectView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        effectView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        effectView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        effectView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        
-        effectView.contentView.addSubview(closeButton)
-        closeButton.topAnchor.constraint(equalTo: effectView.contentView.topAnchor).isActive = true
-        closeButton.bottomAnchor.constraint(equalTo: effectView.contentView.bottomAnchor).isActive = true
-        closeButton.leftAnchor.constraint(equalTo: effectView.contentView.leftAnchor).isActive = true
-        closeButton.rightAnchor.constraint(equalTo: effectView.contentView.rightAnchor).isActive = true
-        
-        effectView.contentView.addSubview(webView)
-        webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
-        webView.bottomAnchor.constraint(equalTo: effectView.contentView.bottomAnchor, constant: -30).isActive = true
-        webView.leftAnchor.constraint(equalTo: effectView.contentView.leftAnchor, constant: 30).isActive = true
-        webView.rightAnchor.constraint(equalTo: effectView.contentView.rightAnchor, constant: -30).isActive = true
+        webViewViewController.view.backgroundColor = .white
+        webViewViewController.view.addSubview(webView)
+        webView.topAnchor.constraint(equalTo: webViewViewController.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        webView.bottomAnchor.constraint(equalTo: webViewViewController.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        webView.leftAnchor.constraint(equalTo: webViewViewController.view.safeAreaLayoutGuide.leftAnchor).isActive = true
+        webView.rightAnchor.constraint(equalTo: webViewViewController.view.safeAreaLayoutGuide.rightAnchor).isActive = true
     }
     
     fileprivate func setupDeal() {
@@ -283,40 +258,60 @@ class DealViewController: UIViewController {
     }
 }
 
-extension DealViewController: UIWebViewDelegate {
+extension DealViewController: WKNavigationDelegate {
     
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        if let url: String = webView.request?.url?.absoluteString {
-            if url == "https://meh.com/" {
-                webView.stringByEvaluatingJavaScript(from: "document.getElementsByTagName('form')[1].submit();")
-            } else if url.range(of: "signin") != nil {
-                resetMehButton()
-                let alert = UIAlertController(title: "Sign in Required", message: "You must be signed in to meh.com in order to rate this deal.", preferredStyle: .alert)
-                
-                let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
-                    self.effectView.isHidden = false
-                }
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                
-                alert.addAction(okAction)
-                alert.addAction(cancelAction)
-                
-                self.present(alert, animated: true)
-            } else if url.range(of: "vote") != nil || url.range(of: "deals") != nil {
-                resetMehButton()
-                if !UserDefaults.standard.bool(forKey: "mehDisclaimer") {
-                    let alert = UIAlertController(title: "The meh Button",
-                                                  message: "The meh button now remembers if you have pressed it for the currently active deal. If you have, it will not appear until there is a new deal.",
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        guard let url = webView.url else { return }
+        guard let host = url.host, host == "meh.com" else { return }
+        switch url.path {
+        case "/":
+            webView.evaluateJavaScript("document.querySelectorAll('form')[1].submit();") { (a, err) in
+                self.resetMehButton()
+                guard err == nil else {
+                    let alert = UIAlertController(title: "Unable to press the meh button",
+                                                  message: "An unexpected error happened when trying to press the meh button, please try again later.",
                                                   preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
-                        UserDefaults.standard.set(true, forKey: "mehDisclaimer")
-                    }))
-                    present(alert, animated: true)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true)
+                    return
                 }
-                UserDefaults.standard.set(deal.id, forKey: "meh")
-                self.effectView.isHidden = true
-                self.mehButton.isHidden = true
             }
+            break
+        case "/account/signin":
+            let alert = UIAlertController(title: "Sign in required", message: "You must be signed in to meh.com in order to rate this deal.", preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+                self.present(self.webViewViewController, animated: true)
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            alert.addAction(okAction)
+            alert.addAction(cancelAction)
+
+            self.present(alert, animated: true) {
+                self.resetMehButton()
+            }
+            break
+        case deal.url.path.replacingOccurrences(of: "/deals", with: "/vote"):
+            fallthrough
+        case deal.url.path:
+            resetMehButton()
+            self.mehButton.isHidden = true
+            if self.webViewViewController.isBeingPresented {
+                self.dismiss(animated: true)
+            }
+            UserDefaults.standard.set(deal.id, forKey: "meh")
+            if !UserDefaults.standard.bool(forKey: "mehDisclaimer") {
+                let alert = UIAlertController(title: "The meh button",
+                                             message: "The meh button now remembers if you have pressed it for the currently active deal. If you have, it will not appear until there is a new deal.",
+                                             preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                   UserDefaults.standard.set(true, forKey: "mehDisclaimer")
+                }))
+                present(alert, animated: true)
+            }
+        default:
+            break
         }
     }
 }
