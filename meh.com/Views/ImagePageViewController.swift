@@ -21,7 +21,9 @@ class ImagePageViewController: UIPageViewController {
     
     var deal: Deal! {
         didSet {
-            setup()
+            if oldValue == nil || deal.id != oldValue.id {
+                setup()
+            }
         }
     }
     

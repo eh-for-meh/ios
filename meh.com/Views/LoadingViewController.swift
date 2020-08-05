@@ -35,12 +35,19 @@ class LoadingViewController: UIViewController {
 }
 
 extension LoadingViewController: DealUpdateListener {
+    var id: String {
+        get {
+            "LoadingViewController"
+        }
+    }
+    
     func dealUpdateInitiated() {
         // TODO
     }
     
     func dealUpdated() {
         if let deal = DealLoader.shared.deal {
+            DealLoader.shared.removeListener(listener: self)
             DispatchQueue.main.async {
                 UIView.animate(withDuration: 0.5, animations: {
                     self.view.backgroundColor = UIColor.color(fromHexString: deal.theme.backgroundColor)

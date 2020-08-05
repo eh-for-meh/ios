@@ -175,6 +175,12 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: DealUpdateListener {
+    var id: String {
+        get {
+            "MainViewController"
+        }
+    }
+    
     
     func dealUpdateInitiated() {
         // TODO

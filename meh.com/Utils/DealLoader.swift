@@ -10,6 +10,7 @@ import FirebaseAnalytics
 import UIKit
 
 protocol DealUpdateListener {
+    var id: String { get }
     func dealUpdateInitiated()
     func dealUpdated()
     func dealUpdateFailed(error: Error)
@@ -45,6 +46,10 @@ class DealLoader {
     
     func addListener(listener: DealUpdateListener) {
         listeners.append(listener)
+    }
+    
+    func removeListener(listener: DealUpdateListener) {
+        listeners = listeners.filter { $0.id != listener.id }
     }
     
     func loadCurrentDeal(completion: @escaping (Result<Deal, Error>) -> Void = { _ in }) {
