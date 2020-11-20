@@ -266,13 +266,14 @@ extension DealViewController: WKNavigationDelegate {
         switch url.path {
         case "/":
             webView.evaluateJavaScript("document.querySelectorAll('form')[1].submit();") { (a, err) in
-                self.resetMehButton()
                 guard err == nil else {
                     let alert = UIAlertController(title: "Unable to press the meh button",
                                                   message: "An unexpected error happened when trying to press the meh button, please try again later.",
                                                   preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default))
-                    self.present(alert, animated: true)
+                    self.present(alert, animated: true) {
+                        self.resetMehButton()
+                    }
                     return
                 }
             }
@@ -295,7 +296,6 @@ extension DealViewController: WKNavigationDelegate {
         case deal.url.path.replacingOccurrences(of: "/deals", with: "/vote"):
             fallthrough
         case deal.url.path:
-            resetMehButton()
             self.mehButton.isHidden = true
             if self.webViewViewController.isBeingPresented {
                 self.dismiss(animated: true)
@@ -308,7 +308,9 @@ extension DealViewController: WKNavigationDelegate {
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
                    UserDefaults.standard.set(true, forKey: "mehDisclaimer")
                 }))
-                present(alert, animated: true)
+                present(alert, animated: true) {
+                    self.resetMehButton()
+                }
             }
         default:
             break
@@ -339,8 +341,7 @@ extension DealViewController: ImagePageViewControllerDelegate {
     }
     
     func imageLongPressed(_ image: UIImage) {
-        let activityViewController = UIActivityViewController(activityItems: [ image ],
-                                                              applicationActivities: nil)
+        let activityViewController = UIActivityViewController(activityItems: [ image ], applicationActivities: nil)
         present(activityViewController, animated: true)
     }
 }

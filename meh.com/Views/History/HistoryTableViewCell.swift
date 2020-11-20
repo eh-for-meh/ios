@@ -43,6 +43,9 @@ class HistoryTableViewCell: UITableViewCell {
     var deal: PreviousDeal! {
         didSet {
             titleLabel.text = deal.title
+            if UserDefaults.standard.bool(forKey: "loadHistoryImages") != true {
+                return
+            }
             if let image = URL(string: deal.photo.replacingOccurrences(of: "http://", with: "https://")) {
                 let options = ImageLoadingOptions(placeholder: nil,
                                                   transition: .fadeIn(duration: 0.3),
@@ -50,9 +53,9 @@ class HistoryTableViewCell: UITableViewCell {
                                                   failureImageTransition: nil,
                                                   contentModes: nil,
                                                   tintColors: nil)
-                Nuke.loadImage(with: image, options: options, into: dealImageView) { _ in
+                Nuke.loadImage(with: image, options: options, into: dealImageView, completion:  { _ in
                     self.animateLoadedImage()
-                }
+                })
             }
         }
     }

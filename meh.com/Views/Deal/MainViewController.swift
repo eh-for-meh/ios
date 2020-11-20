@@ -19,7 +19,6 @@ class MainViewController: UIViewController {
                 bottomSheet.deal = deal
                 UIView.animate(withDuration: 0.5, animations: {
                     self.view.backgroundColor = UIColor.color(fromHexString: deal.theme.backgroundColor)
-                    self.optionsStackView.backgroundColor = deal.theme.foreground == "dark" ? .white : .black
                     self.settingsButton.alpha = 1
                     self.settingsButton.tintColor = UIColor.color(fromHexString: deal.theme.accentColor)
                     self.historyButton.alpha = 1

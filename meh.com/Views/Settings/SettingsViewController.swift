@@ -55,19 +55,19 @@ class SettingsViewController: QuickTableViewController, UNUserNotificationCenter
         if let dealHistoryCount: Int = UserDefaults.standard.object(forKey: "dealHistoryCount") as? Int {
             radios = RadioSection(title: "",
                                   options: [
-                                    OptionRow(title: "5 Deals", isSelected: dealHistoryCount == 5, action: didToggleOption()),
-                                    OptionRow(title: "10 Deals", isSelected: dealHistoryCount == 10, action: didToggleOption()),
-                                    OptionRow(title: "20 Deals", isSelected: dealHistoryCount == 20, action: didToggleOption()),
-                                    OptionRow(title: "50 Deals", isSelected: dealHistoryCount == 50, action: didToggleOption())
+                                    OptionRow(text: "5 Deals", isSelected: dealHistoryCount == 5, action: didToggleOption()),
+                                    OptionRow(text: "10 Deals", isSelected: dealHistoryCount == 10, action: didToggleOption()),
+                                    OptionRow(text: "20 Deals", isSelected: dealHistoryCount == 20, action: didToggleOption()),
+                                    OptionRow(text: "50 Deals", isSelected: dealHistoryCount == 50, action: didToggleOption())
                 ],
                                   footer: "Number of deals to display in history screen. Please note that the more deals you load, the more data/bandwidh will be used.")
         } else {
             radios = RadioSection(title: "",
                                   options: [
-                                    OptionRow(title: "5 Deals", isSelected: false, action: didToggleOption()),
-                                    OptionRow(title: "10 Deals", isSelected: false, action: didToggleOption()),
-                                    OptionRow(title: "20 Deals", isSelected: UIDevice.current.userInterfaceIdiom != .pad, action: didToggleOption()),
-                                    OptionRow(title: "50 Deals", isSelected: UIDevice.current.userInterfaceIdiom == .pad, action: didToggleOption())
+                                    OptionRow(text: "5 Deals", isSelected: false, action: didToggleOption()),
+                                    OptionRow(text: "10 Deals", isSelected: false, action: didToggleOption()),
+                                    OptionRow(text: "20 Deals", isSelected: UIDevice.current.userInterfaceIdiom != .pad, action: didToggleOption()),
+                                    OptionRow(text: "50 Deals", isSelected: UIDevice.current.userInterfaceIdiom == .pad, action: didToggleOption())
                 ],
                                   footer: "Number of deals to display in history screen. Please note that the more deals you load, the more data/bandwidh will be used.")
         }
@@ -102,7 +102,7 @@ class SettingsViewController: QuickTableViewController, UNUserNotificationCenter
     fileprivate func didToggleSelection() -> (Row) -> Void {
         return { [self] in
             if let option = $0 as? SwitchRowCompatible {
-                switch option.title {
+                switch option.text {
                 case "Receive Notifications":
                     self.setNotificationsEnabled(enabled: option.switchValue)
                     break;
@@ -121,7 +121,7 @@ class SettingsViewController: QuickTableViewController, UNUserNotificationCenter
     
     private func didToggleOption() -> (Row) -> Void {
         return { row in
-            switch row.title.split(separator: " ")[0] {
+            switch row.text.split(separator: " ")[0] {
             case "5":
                 UserDefaults.standard.set(5, forKey: "dealHistoryCount")
                 break;
@@ -337,7 +337,7 @@ class SettingsViewController: QuickTableViewController, UNUserNotificationCenter
     }
     
     fileprivate func setSectionOneRows() {
-        notificationSwitch = SwitchRow(title: "Receive Notifications",
+        notificationSwitch = SwitchRow(text: "Receive Notifications",
                                        switchValue: UserDefaults.standard.bool(forKey: "receiveNotifications"),
                                        action: didToggleSelection())
         

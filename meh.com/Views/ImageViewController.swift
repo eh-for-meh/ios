@@ -88,8 +88,8 @@ class ImageViewController: UIViewController {
                                           failureImageTransition: nil,
                                           contentModes: nil,
                                           tintColors: nil)
-        Nuke.loadImage(with: image, options: options, into: self.imageView) { _ in
+        Nuke.loadImage(with: image, options: options, into: self.imageView, completion:  { _ in
             self.progressView.stopAnimating()
-        }
+        })
     }
 }
