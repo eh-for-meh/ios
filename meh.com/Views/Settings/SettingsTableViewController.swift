@@ -60,6 +60,8 @@ class SettingsTableViewController: UITableViewController, UNUserNotificationCent
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfRowsInSectionOne = (NotificationsManager.shared.getNotifiationState() ? 1 : 0) + (NotificationsManager.shared.getReminderNotifiationState() ? 1 : 0) + 1
+        print("NOTIFICATIONS \(NotificationsManager.shared.getNotifiationState())")
+        print("NOTIFICATIONS REMINDER \(NotificationsManager.shared.getReminderNotifiationState())")
         return [numberOfRowsInSectionOne, 2, 1][section]
     }
     

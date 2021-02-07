@@ -15,6 +15,7 @@ class ReceiveMehButtonNotificationsTableViewCell: UITableViewCell {
     @IBOutlet var toggle: UISwitch?
     
     @IBAction func toggleValueChanged(_ sender: UISwitch) {
+        print(sender.isOn)
         if sender.isOn {
             NotificationsManager.shared.enableReminderNotifications()
         } else {
