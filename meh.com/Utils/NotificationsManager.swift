@@ -90,13 +90,11 @@ class NotificationsManager {
         formatter.timeStyle = .short
         formatter.defaultDate = Date(timeIntervalSinceReferenceDate: 0)
         guard let testDate = formatter.date(from: getReminderNotifiationTime()) else { return }
-        print("I AM HERE")
         let triggerDate = Calendar.current.dateComponents([.hour,.minute,.second], from: testDate)
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: true)
         let request = UNNotificationRequest(identifier: "com.kirinpatel.meh", content: content, trigger: trigger)
         current.add(request, withCompletionHandler: { (error) in
             if let error = error {
-                print("ERROR?")
                 UserDefaults.standard.set(false, forKey: "remindForMeh")
                 self.updateReminderNotificationsTime(time: "6:00 PM")
                 self.listeners.forEach({ $0.reminderNotificationStateChangeFailed(error: error) })

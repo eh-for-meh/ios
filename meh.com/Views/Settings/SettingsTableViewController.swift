@@ -60,8 +60,6 @@ class SettingsTableViewController: UITableViewController, UNUserNotificationCent
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfRowsInSectionOne = (NotificationsManager.shared.getNotifiationState() ? 1 : 0) + (NotificationsManager.shared.getReminderNotifiationState() ? 1 : 0) + 1
-        print("NOTIFICATIONS \(NotificationsManager.shared.getNotifiationState())")
-        print("NOTIFICATIONS REMINDER \(NotificationsManager.shared.getReminderNotifiationState())")
         return [numberOfRowsInSectionOne, 2, 1][section]
     }
     
@@ -73,14 +71,14 @@ class SettingsTableViewController: UITableViewController, UNUserNotificationCent
                 "recieveNotifications": true,
                 "error": "Was not set in database."
                 ])
+            NotificationsManager.shared.enableNotifications()
         })
         let noAction = UIAlertAction(title: "No", style: .cancel, handler: { _ in
             Analytics.logEvent("setNotifications", parameters: [
                 "recieveNotifications": false,
                 "error": "Was not set in database."
                 ])
-            UserDefaults.standard.set(false, forKey: "receiveNotifications")
-            Database.database().reference().child("notifications/\(Messaging.messaging().fcmToken!)").removeValue()
+            NotificationsManager.shared.disableNotifications()
         })
 
         alert.addAction(yesAction)
@@ -116,6 +114,7 @@ extension SettingsTableViewController: NotificationsManagerListener {
     func notificationStateChangeFailed(granted: Bool, error: Error?) {
         DispatchQueue.main.async(execute: {
             self.tableView.reloadData()
+            self.showSimpleAlert(title: "An unexpected error occurred!", message: "Notifications were unable to be enabled, please ensure that \"eh for meh\" can send notifications within your settings!")
         })
     }
     
@@ -128,6 +127,7 @@ extension SettingsTableViewController: NotificationsManagerListener {
     func reminderNotificationStateChangeFailed(error: Error?) {
         DispatchQueue.main.async(execute: {
             self.tableView.reloadData()
+            self.showSimpleAlert(title: "An unexpected error occurred!", message: "Notifications were unable to be enabled, please ensure that \"eh for meh\" can send notifications within your settings!")
         })
     }
     
