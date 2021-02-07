@@ -131,7 +131,9 @@ class MainViewController: UIViewController {
     
     @objc func handleViewSettings() {
         guard deal != nil else { return }
-        present(SettingsNavigationViewController(), animated: true)
+        let storyboard = UIStoryboard(name: "SettingsScene", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "navigationView")
+        present(viewController, animated: true)
     }
     
     fileprivate func addBottomSheet() {

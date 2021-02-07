@@ -75,12 +75,11 @@ class HistoryTableViewController: UITableViewController {
     }
     
     fileprivate func loadData() {
-        let defaultToLast: Int = UIDevice.current.userInterfaceIdiom == .pad ? 51 : 21
-        let toLast: Int = UserDefaults.standard.object(forKey: "dealHistoryCount") as? Int ?? defaultToLast
+        let toLast: Int = UserDefaults.standard.object(forKey: "dealHistoryCount") as? Int ?? 25
         DealLoader.shared.loadPreviousDeals { result in
             switch result {
             case .success(let previousDeals):
-                let visibleDeals = previousDeals.dropFirst().dropLast(previousDeals.count - toLast - 1)
+                let visibleDeals = previousDeals.dropFirst().dropLast(previousDeals.count - toLast)
                 visibleDeals.forEach({ self.previousDeals.append($0) })
                 DispatchQueue.main.async {
                     self.tableView.reloadData()

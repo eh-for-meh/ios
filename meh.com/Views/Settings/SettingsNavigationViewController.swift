@@ -15,6 +15,6 @@ class SettingsNavigationViewController: UINavigationController {
         
         navigationBar.prefersLargeTitles = true
         
-        pushViewController(SettingsViewController(), animated: true)
+        pushViewController(SettingsTableViewController(), animated: true)
     }
 }

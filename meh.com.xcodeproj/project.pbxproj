@@ -15,11 +15,17 @@
 		7826E0EE1FD659320011AA23 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826E0ED1FD659320011AA23 /* ImageViewController.swift */; };
 		7830BD991FD5C1EB00F3D371 /* DealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7830BD981FD5C1EB00F3D371 /* DealViewController.swift */; };
 		784BED89211958D400F68B60 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784BED88211958D400F68B60 /* Theme.swift */; };
-		785C37FC1FD76D0D002CE08C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785C37FB1FD76D0D002CE08C /* SettingsViewController.swift */; };
+		785C37FC1FD76D0D002CE08C /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785C37FB1FD76D0D002CE08C /* SettingsTableViewController.swift */; };
 		785D3ECB20131C9B00EB1598 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785D3ECA20131C9B00EB1598 /* NotificationCenter.framework */; };
 		785D3ECE20131C9B00EB1598 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785D3ECD20131C9B00EB1598 /* TodayViewController.swift */; };
 		785D3ED120131C9B00EB1598 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 785D3ECF20131C9B00EB1598 /* MainInterface.storyboard */; };
 		785D3ED520131C9B00EB1598 /* Meh Deal.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 785D3EC920131C9B00EB1598 /* Meh Deal.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		787EF36025D0844500858653 /* ReceiveMehButtonNotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787EF35F25D0844500858653 /* ReceiveMehButtonNotificationsTableViewCell.swift */; };
+		787EF36525D0871B00858653 /* ReceiveMehButtonNotificationTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787EF36425D0871B00858653 /* ReceiveMehButtonNotificationTimeTableViewCell.swift */; };
+		787EF36A25D08F6D00858653 /* DealHistoryLoadImagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787EF36925D08F6D00858653 /* DealHistoryLoadImagesTableViewCell.swift */; };
+		787EF36F25D090E400858653 /* DealHistoryLoadCountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787EF36E25D090E400858653 /* DealHistoryLoadCountTableViewCell.swift */; };
+		788B9D4725CF649D00C14E6C /* ReceiveNotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788B9D4625CF649D00C14E6C /* ReceiveNotificationsTableViewCell.swift */; };
+		788B9D4C25CF66F900C14E6C /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788B9D4B25CF66F900C14E6C /* NotificationsManager.swift */; };
 		78952D8F1FD5BDCF000E0AAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78952D8E1FD5BDCF000E0AAC /* AppDelegate.swift */; };
 		78952D981FD5BDCF000E0AAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78952D971FD5BDCF000E0AAC /* Assets.xcassets */; };
 		78952D9B1FD5BDCF000E0AAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78952D991FD5BDCF000E0AAC /* LaunchScreen.storyboard */; };
@@ -40,6 +46,7 @@
 		78D1A6612218514E00AF75F9 /* Meh Notification Service Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 78D1A65A2218514E00AF75F9 /* Meh Notification Service Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		78D5D7A7211D472C0085D4E2 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D5D7A6211D472C0085D4E2 /* HistoryTableViewCell.swift */; };
 		78E2712721759202008375E0 /* SettingsNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E2712621759202008375E0 /* SettingsNavigationViewController.swift */; };
+		78F4175A25B4BBBD003A3A22 /* SettingsScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78F4175925B4BBBD003A3A22 /* SettingsScene.storyboard */; };
 		78F7C21D2229AA5E00518183 /* EnlargedImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F7C21C2229AA5E00518183 /* EnlargedImageViewController.swift */; };
 		A9E3D3EBBF74004850F4629F /* Pods_meh_com.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9B8600787B1AEA09CCDBB8F /* Pods_meh_com.framework */; };
 /* End PBXBuildFile section */
@@ -87,13 +94,19 @@
 		7826E0ED1FD659320011AA23 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		7830BD981FD5C1EB00F3D371 /* DealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealViewController.swift; sourceTree = "<group>"; };
 		784BED88211958D400F68B60 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		785C37FB1FD76D0D002CE08C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		785C37FB1FD76D0D002CE08C /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		785C37FD1FD7A2DF002CE08C /* meh.com.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = meh.com.entitlements; sourceTree = "<group>"; };
 		785D3EC920131C9B00EB1598 /* Meh Deal.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Meh Deal.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		785D3ECA20131C9B00EB1598 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		785D3ECD20131C9B00EB1598 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		785D3ED020131C9B00EB1598 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		785D3ED220131C9B00EB1598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		787EF35F25D0844500858653 /* ReceiveMehButtonNotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveMehButtonNotificationsTableViewCell.swift; sourceTree = "<group>"; };
+		787EF36425D0871B00858653 /* ReceiveMehButtonNotificationTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveMehButtonNotificationTimeTableViewCell.swift; sourceTree = "<group>"; };
+		787EF36925D08F6D00858653 /* DealHistoryLoadImagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealHistoryLoadImagesTableViewCell.swift; sourceTree = "<group>"; };
+		787EF36E25D090E400858653 /* DealHistoryLoadCountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealHistoryLoadCountTableViewCell.swift; sourceTree = "<group>"; };
+		788B9D4625CF649D00C14E6C /* ReceiveNotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveNotificationsTableViewCell.swift; sourceTree = "<group>"; };
+		788B9D4B25CF66F900C14E6C /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		78952D8B1FD5BDCE000E0AAC /* meh.com.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meh.com.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78952D8E1FD5BDCF000E0AAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78952D971FD5BDCF000E0AAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -118,6 +131,7 @@
 		78D1A66622185B6A00AF75F9 /* Meh Notification Service Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Meh Notification Service Extension.entitlements"; sourceTree = "<group>"; };
 		78D5D7A6211D472C0085D4E2 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		78E2712621759202008375E0 /* SettingsNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationViewController.swift; sourceTree = "<group>"; };
+		78F4175925B4BBBD003A3A22 /* SettingsScene.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsScene.storyboard; sourceTree = "<group>"; };
 		78F7C21C2229AA5E00518183 /* EnlargedImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnlargedImageViewController.swift; sourceTree = "<group>"; };
 		903BF7FAD035129F02A7C4FD /* Pods-Meh Deal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meh Deal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Meh Deal/Pods-Meh Deal.debug.xcconfig"; sourceTree = "<group>"; };
 		AD64933D1800455A5CA2E589 /* Pods_Meh_Deal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meh_Deal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,14 +185,28 @@
 			children = (
 				78266BC0200FC7F400BF5BD8 /* Extensions.swift */,
 				78C110DD211B97D100622810 /* DealLoader.swift */,
+				788B9D4B25CF66F900C14E6C /* NotificationsManager.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		7830B1DC25CEF221009BE8E3 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				788B9D4625CF649D00C14E6C /* ReceiveNotificationsTableViewCell.swift */,
+				787EF35F25D0844500858653 /* ReceiveMehButtonNotificationsTableViewCell.swift */,
+				787EF36425D0871B00858653 /* ReceiveMehButtonNotificationTimeTableViewCell.swift */,
+				787EF36925D08F6D00858653 /* DealHistoryLoadImagesTableViewCell.swift */,
+				787EF36E25D090E400858653 /* DealHistoryLoadCountTableViewCell.swift */,
+			);
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 		7830BD8F1FD5BECD00F3D371 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				78952D991FD5BDCF000E0AAC /* LaunchScreen.storyboard */,
+				78F4175925B4BBBD003A3A22 /* SettingsScene.storyboard */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -293,8 +321,9 @@
 		78E1AFFE21DC53E000703777 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				7830B1DC25CEF221009BE8E3 /* TableViewCells */,
 				78E2712621759202008375E0 /* SettingsNavigationViewController.swift */,
-				785C37FB1FD76D0D002CE08C /* SettingsViewController.swift */,
+				785C37FB1FD76D0D002CE08C /* SettingsTableViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -458,6 +487,7 @@
 			files = (
 				78952D9B1FD5BDCF000E0AAC /* LaunchScreen.storyboard in Resources */,
 				78C57276226F8041005C5F37 /* GoogleService-Info.plist in Resources */,
+				78F4175A25B4BBBD003A3A22 /* SettingsScene.storyboard in Resources */,
 				78952D981FD5BDCF000E0AAC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -537,22 +567,32 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-meh.com/Pods-meh.com-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseDatabase/FirebaseDatabase.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseInstanceID/FirebaseInstanceID.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseMessaging/FirebaseMessaging.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/QuickTableViewController/QuickTableViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/markymark/markymark.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreDiagnostics.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseDatabase.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstallations.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstanceID.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseMessaging.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickTableViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/markymark.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -582,9 +622,13 @@
 				78C110DE211B97D100622810 /* DealLoader.swift in Sources */,
 				78952D8F1FD5BDCF000E0AAC /* AppDelegate.swift in Sources */,
 				7830BD991FD5C1EB00F3D371 /* DealViewController.swift in Sources */,
-				785C37FC1FD76D0D002CE08C /* SettingsViewController.swift in Sources */,
+				785C37FC1FD76D0D002CE08C /* SettingsTableViewController.swift in Sources */,
+				788B9D4C25CF66F900C14E6C /* NotificationsManager.swift in Sources */,
 				784BED89211958D400F68B60 /* Theme.swift in Sources */,
+				787EF36F25D090E400858653 /* DealHistoryLoadCountTableViewCell.swift in Sources */,
 				78266BC1200FC7F400BF5BD8 /* Extensions.swift in Sources */,
+				787EF36025D0844500858653 /* ReceiveMehButtonNotificationsTableViewCell.swift in Sources */,
+				787EF36525D0871B00858653 /* ReceiveMehButtonNotificationTimeTableViewCell.swift in Sources */,
 				78D5D7A7211D472C0085D4E2 /* HistoryTableViewCell.swift in Sources */,
 				78C110D6211B955700622810 /* Story.swift in Sources */,
 				7826E0EA1FD655400011AA23 /* ImagePageViewController.swift in Sources */,
@@ -596,6 +640,8 @@
 				78AD53AE2102F4AF0031E9B0 /* LoadingViewController.swift in Sources */,
 				781FCC5F20FE5D63009F35ED /* MainViewController.swift in Sources */,
 				78E2712721759202008375E0 /* SettingsNavigationViewController.swift in Sources */,
+				788B9D4725CF649D00C14E6C /* ReceiveNotificationsTableViewCell.swift in Sources */,
+				787EF36A25D08F6D00858653 /* DealHistoryLoadImagesTableViewCell.swift in Sources */,
 				78C110D2211B948C00622810 /* Deal.swift in Sources */,
 				78F7C21D2229AA5E00518183 /* EnlargedImageViewController.swift in Sources */,
 				78C110D8211B958D00622810 /* Topic.swift in Sources */,
@@ -651,12 +697,12 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Meh Deal/Meh Deal.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 63;
+				CURRENT_PROJECT_VERSION = 64;
 				DEVELOPMENT_TEAM = T4GLZ43QVM;
 				INFOPLIST_FILE = "Meh Deal/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.2.0;
+				MARKETING_VERSION = 2.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kirinpatel.meh.Meh-Deal";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -671,12 +717,12 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Meh Deal/Meh Deal.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 63;
+				CURRENT_PROJECT_VERSION = 64;
 				DEVELOPMENT_TEAM = T4GLZ43QVM;
 				INFOPLIST_FILE = "Meh Deal/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.2.0;
+				MARKETING_VERSION = 2.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kirinpatel.meh.Meh-Deal";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -806,12 +852,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = meh.com/meh.com.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 63;
+				CURRENT_PROJECT_VERSION = 64;
 				DEVELOPMENT_TEAM = T4GLZ43QVM;
 				INFOPLIST_FILE = meh.com/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.2.0;
+				MARKETING_VERSION = 2.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kirinpatel.meh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
@@ -828,12 +874,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = meh.com/meh.com.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 63;
+				CURRENT_PROJECT_VERSION = 64;
 				DEVELOPMENT_TEAM = T4GLZ43QVM;
 				INFOPLIST_FILE = meh.com/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.2.0;
+				MARKETING_VERSION = 2.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kirinpatel.meh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
@@ -851,12 +897,12 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_ENTITLEMENTS = "Meh Notification Service Extension/Meh Notification Service Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 63;
+				CURRENT_PROJECT_VERSION = 64;
 				DEVELOPMENT_TEAM = T4GLZ43QVM;
 				INFOPLIST_FILE = "Meh Notification Service Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.2.0;
+				MARKETING_VERSION = 2.3.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kirinpatel.meh.Meh-Notification-Service-Extension";
@@ -876,12 +922,12 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_ENTITLEMENTS = "Meh Notification Service Extension/Meh Notification Service Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 63;
+				CURRENT_PROJECT_VERSION = 64;
 				DEVELOPMENT_TEAM = T4GLZ43QVM;
 				INFOPLIST_FILE = "Meh Notification Service Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.2.0;
+				MARKETING_VERSION = 2.3.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kirinpatel.meh.Meh-Notification-Service-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";

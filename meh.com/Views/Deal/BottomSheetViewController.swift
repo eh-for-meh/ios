@@ -8,7 +8,6 @@
 
 import UIKit
 import SafariServices
-import GoogleMobileAds
 import markymark
 
 class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
@@ -120,15 +119,12 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
         return mv
     }()
     
-    var bannerView: GADBannerView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .clear
         
         roundCorners()
-        loadBannerView()
         setupView()
         setupGestureListener()
     }
@@ -299,11 +295,6 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
         buyButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         buyButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor, constant: 0).isActive = true
         
-        view.addSubview(bannerView)
-        bannerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -150).isActive = true
-        bannerView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 0).isActive = true
-        bannerView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: 0).isActive = true
-        
         view.addSubview(segmentControl)
         segmentControl.topAnchor.constraint(equalTo: buyButton.bottomAnchor, constant: 20).isActive = true
         segmentControl.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 20).isActive = true
@@ -312,7 +303,7 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
         
         view.addSubview(featureScrollView)
         featureScrollView.topAnchor.constraint(equalTo: segmentControl.bottomAnchor, constant: 10).isActive = true
-        featureScrollView.bottomAnchor.constraint(equalTo: bannerView.topAnchor).isActive = true
+        featureScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -150).isActive = true
         featureScrollView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
         featureScrollView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
         
@@ -327,7 +318,7 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
         
         view.addSubview(specificationScrollView)
         specificationScrollView.topAnchor.constraint(equalTo: segmentControl.bottomAnchor, constant: 10).isActive = true
-        specificationScrollView.bottomAnchor.constraint(equalTo: bannerView.topAnchor).isActive = true
+        specificationScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -150).isActive = true
         specificationScrollView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
         specificationScrollView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
         
@@ -342,7 +333,7 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
         
         view.addSubview(storyScrollView)
         storyScrollView.topAnchor.constraint(equalTo: segmentControl.bottomAnchor, constant: 10).isActive = true
-        storyScrollView.bottomAnchor.constraint(equalTo: bannerView.topAnchor).isActive = true
+        storyScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -150).isActive = true
         storyScrollView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
         storyScrollView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
         
@@ -392,13 +383,5 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
             storyView.sizeToFit()
             storyView.layoutIfNeeded()
         }
-    }
-    
-    fileprivate func loadBannerView() {
-        bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
-        bannerView.translatesAutoresizingMaskIntoConstraints = false
-        bannerView.adUnitID = "ca-app-pub-9026572937829340/4650231965"
-        bannerView.rootViewController = self
-        bannerView.isAutoloadEnabled = true
     }
 }

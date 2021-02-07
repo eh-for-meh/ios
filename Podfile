@@ -7,13 +7,11 @@ target 'meh.com' do
   
   pod 'Crashlytics'
   pod 'Fabric'
-  pod 'Firebase/AdMob'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Messaging'
   pod 'markymark'
   pod 'Nuke'
-  pod 'QuickTableViewController'
 end
 
 target 'Meh Deal' do
