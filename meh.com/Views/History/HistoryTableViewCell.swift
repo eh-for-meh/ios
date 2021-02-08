@@ -35,6 +35,16 @@ class HistoryTableViewCell: UITableViewCell {
         return label
     }()
     
+    let timeLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 2
+        label.font = UIFont.systemFont(ofSize: 17, weight: .light)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
+        return label
+    }()
+    
     let size: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 125 : 50;
     
     var dealImageViewLeftConstraing: NSLayoutConstraint!
@@ -43,6 +53,7 @@ class HistoryTableViewCell: UITableViewCell {
     var deal: PreviousDeal! {
         didSet {
             titleLabel.text = deal.title
+            timeLabel.text = deal.startedAt
             if UserDefaults.standard.bool(forKey: "loadHistoryImages") != true {
                 return
             }
@@ -71,6 +82,7 @@ class HistoryTableViewCell: UITableViewCell {
         
         card.addSubview(dealImageView)
         dealImageView.topAnchor.constraint(equalTo: card.topAnchor, constant: 8).isActive = true
+        dealImageView.bottomAnchor.constraint(equalTo: card.bottomAnchor, constant: -8).isActive = true
         dealImageViewLeftConstraing = dealImageView.leftAnchor.constraint(equalTo: card.leftAnchor, constant: 0)
         dealImageViewLeftConstraing.isActive = true
         dealImageViewWidthContraint = dealImageView.widthAnchor.constraint(equalToConstant: 0)
@@ -79,10 +91,15 @@ class HistoryTableViewCell: UITableViewCell {
         
         card.addSubview(titleLabel)
         titleLabel.topAnchor.constraint(equalTo: dealImageView.topAnchor, constant: 0).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: card.bottomAnchor, constant: -8).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: dealImageView.rightAnchor, constant: 8).isActive = true
         titleLabel.rightAnchor.constraint(equalTo: card.rightAnchor, constant: -8).isActive = true
-        titleLabel.heightAnchor.constraint(equalToConstant: size).isActive = true
+        
+        card.addSubview(timeLabel)
+        timeLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8).isActive = true
+        timeLabel.bottomAnchor.constraint(equalTo: card.bottomAnchor, constant: -8).isActive = true
+        timeLabel.leftAnchor.constraint(equalTo: dealImageView.rightAnchor, constant: 8).isActive = true
+        timeLabel.rightAnchor.constraint(equalTo: card.rightAnchor, constant: -8).isActive = true
+        timeLabel.heightAnchor.constraint(equalToConstant: size / 4).isActive = true
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -87,6 +87,8 @@ class HistoryTableViewController: UITableViewController {
                 break
             case .failure(_):
                 // TODO
+                print("FAILURE")
+                print(result)
                 break
             }
         }
