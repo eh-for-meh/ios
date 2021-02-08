@@ -342,6 +342,10 @@ extension DealViewController: ImagePageViewControllerDelegate {
     
     func imageLongPressed(_ image: UIImage) {
         let activityViewController = UIActivityViewController(activityItems: [ image ], applicationActivities: nil)
+        activityViewController.title = "Share image"
+        activityViewController.excludedActivityTypes = []
+        activityViewController.popoverPresentationController?.sourceView = view
+        activityViewController.popoverPresentationController?.sourceRect = imagePageViewController.view.frame
         present(activityViewController, animated: true)
     }
 }

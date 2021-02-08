@@ -114,8 +114,12 @@ class MainViewController: UIViewController {
     
     @objc func handleShare() {
         guard let deal = deal else { return }
-        let shareContent = "Chech out this deal from the eh for meh app. \(deal.url)"
-        let activityViewController = UIActivityViewController(activityItems: [shareContent as NSString], applicationActivities: nil)
+        let shareContent = "Chech out this deal from meh.com in the eh for meh app."
+        let activityViewController = UIActivityViewController(activityItems: [shareContent as NSString, deal.url], applicationActivities: nil)
+        activityViewController.title = "Share today's deal!"
+        activityViewController.excludedActivityTypes = []
+        activityViewController.popoverPresentationController?.sourceView = view
+        activityViewController.popoverPresentationController?.sourceRect = optionsStackView.frame
         present(activityViewController, animated: true)
     }
     
