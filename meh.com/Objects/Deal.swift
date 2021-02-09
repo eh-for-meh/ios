@@ -21,6 +21,16 @@ struct Deal: Codable {
     var topic: Topic?
     var url: URL
     var date: Date?
+    var endedAt: String {
+        if let date = date {
+            let formatter = DateFormatter()
+            formatter.doesRelativeDateFormatting = true
+            formatter.dateStyle = .medium
+            return formatter.string(from: date)
+        } else {
+            return ""
+        }
+    }
 }
 
 struct PreviousDealCreatedAt: Codable {

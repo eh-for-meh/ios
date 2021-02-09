@@ -7,6 +7,7 @@
 //
 
 import FirebaseAnalytics
+import FirebaseDatabase
 import UIKit
 
 protocol DealUpdateListener {
@@ -82,27 +83,31 @@ class DealLoader {
         }
     }
     
-    func loadPreviousDeals(completion: @escaping (Result<[PreviousDeal], Error>) -> Void) {
-        if let url = URL(string: "https://meh.com/forum/topics.json?category=deals&sort=date-created") {
-            let urlSession = URLSession(configuration: .default).dataTask(with: url) { (data, response, error) in
-                Analytics.logEvent("loadPreviousDeals", parameters: ["eventType": "initiated"])
-                if let error = error {
-                    Analytics.logEvent("loadPreviousDeals", parameters: ["eventType": "failed", "reason": "network"])
-                    completion(.failure(error))
-                }
-                
-                if let data = data {
+    func loadPreviousDeals(completion: @escaping (Result<[Deal], Error>) -> Void) {
+        let toLast: UInt = UInt(UserDefaults.standard.object(forKey: "dealHistoryCount") as? Int ?? 25)
+        print(toLast)
+        let ref = Database.database().reference().child("previousDeal")
+        let query = ref.queryOrdered(byChild: "time").queryLimited(toLast: toLast)
+        query.observeSingleEvent(of: .value) { snapshot in
+            var previousDeals: [Deal] = []
+            for child in snapshot.children.allObjects.reversed().dropFirst() {
+                if let childSnapshot = child as? DataSnapshot {
                     do {
-                        let previousDeals = try JSONDecoder().decode([PreviousDeal].self, from: data)
-                        Analytics.logEvent("loadPreviousDeals", parameters: ["eventType": "success"])
-                        completion(.success(previousDeals))
+                        let endTime = childSnapshot.childSnapshot(forPath: "time").value as? Double ?? 0
+                        let endDate = Date(timeIntervalSince1970: endTime / 1000)
+                        let dealSnapshot = childSnapshot.childSnapshot(forPath: "deal")
+                        let data = try JSONSerialization.data(withJSONObject: dealSnapshot.value as Any)
+                        var deal = try JSONDecoder().decode(Deal.self, from: data)
+                        deal.date = endDate
+                        previousDeals.append(deal)
                     } catch let error {
-                        Analytics.logEvent("loadPreviousDeals", parameters: ["eventType": "failed", "reason": "decode"])
                         completion(.failure(error))
                     }
                 }
             }
-            urlSession.resume()
+            completion(.success(previousDeals))
+        } withCancel: { error in
+            completion(.failure(error))
         }
     }
     

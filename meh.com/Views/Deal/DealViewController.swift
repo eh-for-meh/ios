@@ -202,6 +202,9 @@ class DealViewController: UIViewController {
             self.mehButton.tintColor = UIColor.color(fromHexString: theme.backgroundColor)
             self.mehButton.setTitleColor(UIColor.color(fromHexString: theme.backgroundColor), for: .normal)
             self.mehButton.isHidden = mehPressedFor == self.deal.id
+            if self.deal.date != nil {
+                self.mehButton.isHidden = true
+            }
             self.priceLabel.textColor = UIColor.color(fromHexString: theme.accentColor)
             self.pageControl.currentPageIndicatorTintColor = theme.foreground == "dark" ? .white : .black
             self.titleLabel.textColor = UIColor.color(fromHexString: theme.accentColor)

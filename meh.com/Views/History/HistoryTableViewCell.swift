@@ -50,24 +50,22 @@ class HistoryTableViewCell: UITableViewCell {
     var dealImageViewLeftConstraing: NSLayoutConstraint!
     var dealImageViewWidthContraint: NSLayoutConstraint!
     
-    var deal: PreviousDeal! {
+    var deal: Deal! {
         didSet {
             titleLabel.text = deal.title
-            timeLabel.text = deal.startedAt
+            timeLabel.text = deal.endedAt
             if UserDefaults.standard.bool(forKey: "loadHistoryImages") != true {
                 return
             }
-            if let image = URL(string: deal.photo.replacingOccurrences(of: "http://", with: "https://")) {
-                let options = ImageLoadingOptions(placeholder: nil,
-                                                  transition: .fadeIn(duration: 0.3),
-                                                  failureImage: nil,
-                                                  failureImageTransition: nil,
-                                                  contentModes: nil,
-                                                  tintColors: nil)
-                Nuke.loadImage(with: image, options: options, into: dealImageView, completion:  { _ in
-                    self.animateLoadedImage()
-                })
-            }
+            let options = ImageLoadingOptions(placeholder: nil,
+                                               transition: .fadeIn(duration: 0.3),
+                                               failureImage: nil,
+                                               failureImageTransition: nil,
+                                               contentModes: nil,
+                                               tintColors: nil)
+             Nuke.loadImage(with: deal.photos[0], options: options, into: dealImageView, completion:  { _ in
+                 self.animateLoadedImage()
+             })
         }
     }
     

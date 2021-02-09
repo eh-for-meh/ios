@@ -253,9 +253,7 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
                 self.buyButton.backgroundColor = UIColor.color(fromHexString: deal.theme.backgroundColor)
                 self.buyButton.tintColor = UIColor.color(fromHexString: deal.theme.accentColor)
                 self.buyButton.setTitleColor(UIColor.color(fromHexString: deal.theme.accentColor), for: .normal)
-                if deal.soldOut != nil {
-                    self.buyButton.alpha = 0
-                }
+                self.buyButton.isHidden = deal.soldOut != nil || deal.date != nil
                 self.storyTitleLabel.textColor = UIColor.color(fromHexString: deal.theme.backgroundColor)
             })
         }

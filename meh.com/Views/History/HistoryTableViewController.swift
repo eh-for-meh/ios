@@ -16,7 +16,7 @@ class HistoryTableViewController: UITableViewController {
     let cellIdentifier = "previousDealCell"
     let reviewAskInterval: Double = 86400.0
     let lastTimeReviewAsked = UserDefaults.standard.double(forKey: "lastTimeReviewWasAsked")
-    var previousDeals: [PreviousDeal] = []
+    var previousDeals: [Deal] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,10 +56,11 @@ class HistoryTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let previousDeal = previousDeals[indexPath.row]
-        if let url = URL(string: previousDeal.url) {
-            let view = SFSafariViewController(url: url)
-            present(view, animated: true)
-        }
+        let previousDealViewController = MainViewController()
+        previousDealViewController.deal = previousDeal
+        previousDealViewController.modalPresentationStyle = .fullScreen
+        previousDealViewController.modalTransitionStyle = .crossDissolve
+        present(previousDealViewController, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -75,12 +76,10 @@ class HistoryTableViewController: UITableViewController {
     }
     
     fileprivate func loadData() {
-        let toLast: Int = UserDefaults.standard.object(forKey: "dealHistoryCount") as? Int ?? 25
         DealLoader.shared.loadPreviousDeals { result in
             switch result {
             case .success(let previousDeals):
-                let visibleDeals = previousDeals.dropFirst().dropLast(previousDeals.count - toLast)
-                visibleDeals.forEach({ self.previousDeals.append($0) })
+                self.previousDeals = previousDeals
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }

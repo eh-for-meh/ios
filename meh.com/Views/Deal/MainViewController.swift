@@ -96,7 +96,9 @@ class MainViewController: UIViewController {
         setupDealView()
         addBottomSheet()
         setupView()
-        DealLoader.shared.addListener(listener: self)
+        if deal == nil {
+            DealLoader.shared.addListener(listener: self)
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -175,7 +177,9 @@ class MainViewController: UIViewController {
         }
         
         optionsStackView.addArrangedSubview(shareButton)
-        optionsStackView.addArrangedSubview(viewForumButton)
+        if deal == nil {
+            optionsStackView.addArrangedSubview(viewForumButton)
+        }
     }
 }
 
